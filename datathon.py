@@ -48,6 +48,12 @@ df_melted = df.melt(id_vars=df.columns[~df.columns.str.contains('2020|2021|2022'
                     var_name='indicador',
                     value_name='value')
 df_melted['Ano'] = df_melted['indicador'].apply(lambda x: int(x[-4:]))
+
+df_g = df_melted[df_melted['indicador'].str.contains('INDE')]
+df_g = df_g[df_g['value'].notna()]
+df_g = df_g.drop_duplicates(subset=['Ano', 'NOME']).groupby(['Ano']).size().reset_index(name='Qtd Alunos')
+
+
 ## Sidebar com filtros
 with st.sidebar:
 
@@ -57,13 +63,8 @@ with st.sidebar:
     max_value=int(df_melted['Ano'].max()),
     value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max())))
 
-# Filter the DataFrame based on the selected year range
-filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-    #data_inicial_padrao = df_melted['Ano'].min()
-    #data_final_padrao = df_melted['Ano'].max()
 
-    # data_inicial = st.date_input("Data Inicial", value=data_inicial_padrao, min_value=df_melted['Data'].min())
-    # data_final = st.date_input("Data Final", value=data_final_padrao, max_value=df_melted['Data'].max())
+filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
 
 ## Gráficos
 fig = go.Figure()
@@ -104,3 +105,4 @@ with aba1:
     #     st.metric('', '_')
     #     fig_consumo_fontes_energia = plotagem(dados)
     #     st.plotly_chart(fig_consumo_fontes_energia)
+    st.table(df_g)
