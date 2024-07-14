@@ -55,7 +55,7 @@ with st.sidebar:
     'Select the range of years',
     min_value=int(df_melted['Ano'].min()),
     max_value=int(df_melted['Ano'].max()),
-    value=(int(df_melted['Ano'].min()), int(df['Ano'].max())))
+    value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max())))
 
 # Filter the DataFrame based on the selected year range
 filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
