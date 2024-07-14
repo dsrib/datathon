@@ -1,0 +1,13 @@
+pandas
+scikit-learn
+imbalanced-learn
+streamlit
+joblib
+matplotlib
+seaborn
+plotly
+statsforecast
+prophet
+numpy
+plotly.express
+openpyxl
