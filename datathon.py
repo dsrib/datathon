@@ -47,7 +47,7 @@ df_melted = df.melt(id_vars=df.columns[~df.columns.str.contains('2020|2021|2022'
                     value_vars=df.columns[df.columns.str.contains('2020|2021|2022')],
                     var_name='indicador',
                     value_name='value')
-
+df_melted['Ano'] = df_melted['indicador'].apply(lambda x: int(x[-4:]))
 ## Sidebar com filtros
 with st.sidebar:
 
