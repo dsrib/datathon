@@ -96,16 +96,16 @@ with aba1:
     #     st.metric('', '_')
     #     fig_consumo_fontes_energia = plotagem(dados)
     #     st.plotly_chart(fig_consumo_fontes_energia)
-    st.plotly_chart(fig)
+    #st.plotly_chart(fig)
     st.table(df_g)
 with aba2:
     import streamlit as st
 
-# URL do relatório do Power BI
-power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
+    # URL do relatório do Power BI
+    power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
 
-st.title("Relatório Power BI no Streamlit")
-st.markdown("Este é um relatório do Power BI incorporado no Streamlit.")
+    st.title("Relatório Power BI no Streamlit")
+    st.markdown("Este é um relatório do Power BI incorporado no Streamlit.")
 
-# Incorporando o relatório do Power BI usando um iframe
-st.components.v1.iframe(power_bi_report_url, width=800, height=600, scrolling=True)
+    # Incorporando o relatório do Power BI usando um iframe
+    st.components.v1.iframe(power_bi_report_url, width=800, height=600, scrolling=True)
