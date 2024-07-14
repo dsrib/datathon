@@ -49,9 +49,7 @@ df_melted = df.melt(id_vars=df.columns[~df.columns.str.contains('2020|2021|2022'
                     value_name='value')
 df_melted['Ano'] = df_melted['indicador'].apply(lambda x: int(x[-4:]))
 df_melted['indicador2'] = df_melted['indicador'].apply(lambda x: str(x[:-5]))
-df_g = df_melted[df_melted['indicador'].str.contains('INDE')]
-df_g = df_g[df_g['value'].notna()]
-df_g = df_g.drop_duplicates(subset=['Ano', 'NOME']).groupby(['Ano']).size().reset_index(name='Qtd Alunos')
+
 
 
 ## Sidebar com filtros
@@ -65,7 +63,9 @@ with st.sidebar:
 
 
 filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-
+df_g = filtered_df[filtered_df['indicador'].str.contains('INDE')]
+df_g = df_g[df_g['value'].notna()]
+df_g = df_g.drop_duplicates(subset=['Ano', 'NOME']).groupby(['Ano']).size().reset_index(name='Qtd Alunos')
 ## Gráficos
 fig = go.Figure()
 fig.update_layout(
