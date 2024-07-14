@@ -50,8 +50,8 @@ df_melted = df.melt(id_vars=df.columns[~df.columns.str.contains('2020|2021|2022'
 
 ## Sidebar com filtros
 with st.sidebar:
-    data_inicial_padrao = df_melted['Ano'].min()
-    data_final_padrao = df_melted['Ano'].max()
+    #data_inicial_padrao = df_melted['Ano'].min()
+    #data_final_padrao = df_melted['Ano'].max()
 
     # data_inicial = st.date_input("Data Inicial", value=data_inicial_padrao, min_value=df_melted['Data'].min())
     # data_final = st.date_input("Data Final", value=data_final_padrao, max_value=df_melted['Data'].max())
@@ -97,7 +97,3 @@ with aba1:
     #     st.metric('', '_')
     #     fig_consumo_fontes_energia = plotagem(dados)
     #     st.plotly_chart(fig_consumo_fontes_energia)
-
-
-
- 
