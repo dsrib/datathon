@@ -74,17 +74,8 @@ fig.update_layout(
 )
 
 # Descomente e ajuste as seguintes linhas se os dados estiverem disponíveis e formatados corretamente
-# fig.add_trace(go.Scatter(x=df0['Data'], y=df0['Brent (F0B)'], mode='lines', name='Preço do Petróleo', line=dict(color='midnightblue')))
-# if show_shanghai_index:
-#     fig.add_trace(go.Scatter(x=dfs['Data'], y=dfs['Último'], mode='markers', name='Índice de Xangai', marker=dict(color='green', size=3), yaxis='y2'))
+fig.add_trace(go.Scatter(x=df_g['Ano'], y=df_g['Qtd Alunos'], mode='lines', name='Quantidade de Alunos', line=dict(color='midnightblue')))
 
-# fig.update_layout(title='Preço do Petróleo', xaxis_title='Data', legend=dict(x=0, y=1.1))
-# if show_shanghai_index:
-#     fig.update_layout(yaxis=dict(title='Preço do Petróleo (US$/barril)', color='midnightblue'),
-#                       yaxis2=dict(title='Índice de Xangai', color='green', overlaying='y', side='right'))
-
-# fig.update_xaxes(showgrid=True, zeroline=True, zerolinewidth=2, zerolinecolor='black')
-# fig.update_yaxes(showgrid=True, zeroline=True, zerolinewidth=2, zerolinecolor='black')
 
 ## Visualização no Streamlit
 st.title('PASSOS MÁGICOS')
@@ -94,9 +85,9 @@ with aba1:
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
 
     # Ajuste as linhas abaixo de acordo com a disponibilidade dos dados
-    # with coluna1:
+    with coluna1:
     #     st.metric('Máximo', formata_numero(df0['Brent (F0B)'].max(), ''))
-    #     st.plotly_chart(fig)
+         st.plotly_chart(fig)
     # with coluna2:
     #     st.metric('Mínimo', formata_numero(df0['Brent (F0B)'].min(), ''))
     # with coluna3:
