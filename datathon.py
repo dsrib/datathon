@@ -28,10 +28,10 @@ df_melted = df.melt(id_vars=df.columns[~df.columns.str.contains('2020|2021|2022'
                     value_name='value')
 ## Funções
 def filter_columns(df, filters: list): # adiciono no array o padrão que existe nas colunas e que não quero que tenha na saída final
-    selected_columns = [True] * len(df.columns)  # Inicializa todas as colunas como True
-    for index, column in enumerate(df.columns):
-        if any(filter in column for filter in filters): selected_columns[index] = False
-    return df[df.columns[selected_columns]]
+  selected_columns = [True] * len(df.columns)  # Inicializa todas as colunas como True
+  for index, column in enumerate(df.columns):
+    if any(filter in column for filter in filters): selected_columns[index] = False
+return df[df.columns[selected_columns]]
  
  def cleaning_dataset(df):
   _df = df.dropna(subset=df.columns.difference(['NOME']), how='all') # executa o dropna para todas as colunas sem visualizar a coluna NOME
@@ -39,10 +39,10 @@ def filter_columns(df, filters: list): # adiciono no array o padrão que existe 
   return _df
 
 def convert_to_float64_with_two_decimal_places(df, columns):
-    for col in columns:
-        # Tentar converter para float e tratar erros
-        df[col] = pd.to_numeric(df[col], errors='coerce').round(2)
-    return df
+  for col in columns:
+    # Tentar converter para float e tratar erros
+    df[col] = pd.to_numeric(df[col], errors='coerce').round(2)
+return df
   
 ## Modelo de ML Naive
 
