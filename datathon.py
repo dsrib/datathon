@@ -74,7 +74,7 @@ fig.update_layout(
 )
 
 # Descomente e ajuste as seguintes linhas se os dados estiverem disponíveis e formatados corretamente
-fig.add_trace(go.Bar(x=df_g['Ano'], y=df_g['Qtd Alunos'], mode='lines', name='Quantidade de Alunos', marker_color='midnightblue'))
+fig.add_trace(go.Bar(x=df_g['Ano'], y=df_g['Qtd Alunos'], name='Quantidade de Alunos', marker_color='midnightblue'))
 
 
 ## Visualização no Streamlit
