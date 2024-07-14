@@ -74,7 +74,7 @@ fig.update_layout(
 )
 
 # Descomente e ajuste as seguintes linhas se os dados estiverem disponíveis e formatados corretamente
-fig.add_trace(go.Scatter(x=df_g['Ano'], y=df_g['Qtd Alunos'], mode='lines', name='Quantidade de Alunos', line=dict(color='midnightblue')))
+fig.add_trace(go.Bar(x=df_g['Ano'], y=df_g['Qtd Alunos'], mode='lines', name='Quantidade de Alunos', marker_color='midnightblue'))
 
 
 ## Visualização no Streamlit
@@ -85,9 +85,9 @@ with aba1:
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
 
     # Ajuste as linhas abaixo de acordo com a disponibilidade dos dados
-    with coluna1:
+    #with coluna1:
     #     st.metric('Máximo', formata_numero(df0['Brent (F0B)'].max(), ''))
-         st.plotly_chart(fig)
+         
     # with coluna2:
     #     st.metric('Mínimo', formata_numero(df0['Brent (F0B)'].min(), ''))
     # with coluna3:
@@ -96,4 +96,5 @@ with aba1:
     #     st.metric('', '_')
     #     fig_consumo_fontes_energia = plotagem(dados)
     #     st.plotly_chart(fig_consumo_fontes_energia)
+    st.plotly_chart(fig)
     st.table(df_g)
