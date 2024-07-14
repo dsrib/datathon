@@ -34,9 +34,9 @@ def filter_columns(df, filters: list): # adiciono no array o padrão que existe 
 return df[df.columns[selected_columns]]
  
  def cleaning_dataset(df):
-  _df = df.dropna(subset=df.columns.difference(['NOME']), how='all') # executa o dropna para todas as colunas sem visualizar a coluna NOME
-  _df = _df[~_df.isna().all(axis=1)] # remove linhas com apenas NaN, se tiver algum dado na linha não remove
-  return _df
+    _df = df.dropna(subset=df.columns.difference(['NOME']), how='all') # executa o dropna para todas as colunas sem visualizar a coluna NOME
+    _df = _df[~_df.isna().all(axis=1)] # remove linhas com apenas NaN, se tiver algum dado na linha não remove
+ return _df
 
 def convert_to_float64_with_two_decimal_places(df, columns):
   for col in columns:
