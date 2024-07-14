@@ -50,13 +50,20 @@ df_melted = df.melt(id_vars=df.columns[~df.columns.str.contains('2020|2021|2022'
 
 ## Sidebar com filtros
 with st.sidebar:
+
+    min_year, max_year = st.slider(
+    'Select the range of years',
+    min_value=int(df_melted['Ano'].min()),
+    max_value=int(df_melted['Ano'].max()),
+    value=(int(df_melted['Ano'].min()), int(df['Ano'].max())))
+
+# Filter the DataFrame based on the selected year range
+filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
     #data_inicial_padrao = df_melted['Ano'].min()
     #data_final_padrao = df_melted['Ano'].max()
 
     # data_inicial = st.date_input("Data Inicial", value=data_inicial_padrao, min_value=df_melted['Data'].min())
     # data_final = st.date_input("Data Final", value=data_final_padrao, max_value=df_melted['Data'].max())
-
-    show_shanghai_index = st.checkbox("2022")
 
 ## Gráficos
 fig = go.Figure()
