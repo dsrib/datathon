@@ -56,7 +56,7 @@ with st.sidebar:
     # data_inicial = st.date_input("Data Inicial", value=data_inicial_padrao, min_value=df_melted['Data'].min())
     # data_final = st.date_input("Data Final", value=data_final_padrao, max_value=df_melted['Data'].max())
 
-    show_shanghai_index = st.checkbox("Bolsa de Xangai")
+    show_shanghai_index = st.checkbox("2022")
 
 ## Gráficos
 fig = go.Figure()
