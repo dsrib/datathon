@@ -48,7 +48,7 @@ df_melted = df.melt(id_vars=df.columns[~df.columns.str.contains('2020|2021|2022'
                     var_name='indicador',
                     value_name='value')
 df_melted['Ano'] = df_melted['indicador'].apply(lambda x: int(x[-4:]))
-
+df_melted['indicador2'] = df_melted['indicador'].apply(lambda x: str(x[:-5]))
 df_g = df_melted[df_melted['indicador'].str.contains('INDE')]
 df_g = df_g[df_g['value'].notna()]
 df_g = df_g.drop_duplicates(subset=['Ano', 'NOME']).groupby(['Ano']).size().reset_index(name='Qtd Alunos')
@@ -79,7 +79,7 @@ fig.update_xaxes(type='category')  # Garantindo que o eixo x seja categórico
 
 ## Visualização no Streamlit
 st.title('PASSOS MÁGICOS')
-aba1, = st.tabs(['Visão Geral'])
+aba1, aba2 = st.tabs(['Visão Geral','Power BI'])
 
 with aba1:
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
@@ -98,3 +98,14 @@ with aba1:
     #     st.plotly_chart(fig_consumo_fontes_energia)
     st.plotly_chart(fig)
     st.table(df_g)
+with aba2:
+    import streamlit as st
+
+# URL do relatório do Power BI
+power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
+
+st.title("Relatório Power BI no Streamlit")
+st.markdown("Este é um relatório do Power BI incorporado no Streamlit.")
+
+# Incorporando o relatório do Power BI usando um iframe
+st.components.v1.iframe(power_bi_report_url, width=800, height=600, scrolling=True)
