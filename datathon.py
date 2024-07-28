@@ -13,7 +13,7 @@ from statsmodels.tsa.seasonal import seasonal_decompose
 #from prophet import Prophet  # Descomente se for usar o Prophet
 import openpyxl
 from openai import OpenAI
-OPENAI_API_KEY = "sk-proj-5n4QYv2WamHkLtefBuq3T3BlbkFJLcRVFLFC3ebEFXPIjgj4"
+OPENAI_API_KEY = "sk-proj-pnEh0lK0o8ttXXNuW2XqT3BlbkFJ6qZ7nxB59Sbz0oaiBm4x"
 
 st.set_page_config(layout='wide')
 
