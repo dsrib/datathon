@@ -94,14 +94,17 @@ if aba1:
     st.table(df_g)
     #chat_with_openai()
 if aba2:
+    st.sidebar.empty()
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
     st.markdown("Este relatório tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos.")
 
     # URL do relatório do Power BI
     power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
     # Incorporando o relatório do Power BI usando um iframe
-    st.components.v1.iframe(power_bi_report_url, width=800, height=600, scrolling=True)
-
+    st.components.v1.iframe(power_bi_report_url, width=1000, height=600, scrolling=True)
+# Controle da visibilidade da sidebar
+if not show_sidebar:
+    st.sidebar.empty()
 ## Função para o chat com OpenAI
 def chat_with_openai():
     # Set OpenAI API key from Streamlit secrets
@@ -151,6 +154,4 @@ def chat_with_openai():
 # Chama a função do chat
 
 
-# Controle da visibilidade da sidebar
-if not show_sidebar:
-    st.sidebar.empty()
+
