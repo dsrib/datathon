@@ -140,8 +140,8 @@ with aba2:
     # URL do relatório do Power BI
     power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
 
-    st.title("Relatório Power BI no Streamlit")
-    st.markdown("Este é um relatório do Power BI incorporado no Streamlit.")
+    st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
+    st.markdown("Este é um tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos")
 
     # Incorporando o relatório do Power BI usando um iframe
     st.components.v1.iframe(power_bi_report_url, width=800, height=600, scrolling=True)
