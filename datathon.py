@@ -11,10 +11,10 @@ from sklearn.metrics import accuracy_score, mean_absolute_error, mean_squared_er
 from statsmodels.tsa.seasonal import seasonal_decompose
 #from prophet import Prophet  # Descomente se for usar o Prophet
 import openpyxl
-from openai import OpenAI
+from openai import OpenAI, error
 
 # Defina a chave da API do OpenAI diretamente ou use st.secrets
-OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", "sk-proj-pnEh0lK0o8ttXXNuW2XqT3BlbkFJ6qZ7nxB59Sbz0oaiBm4x")
+OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", "sua-chave-de-api-aqui")
 
 st.set_page_config(layout='wide')
 
@@ -109,18 +109,25 @@ with aba1:
         with st.chat_message("user"):
             st.markdown(prompt)
         # Display assistant response in chat message container
-        with st.chat_message("assistant"):
-            stream = client.chat.completions.create(
-                model=st.session_state["openai_model"],
-                messages=[
-                    {"role": m["role"], "content": m["content"]}
-                    for m in st.session_state.messages
-                ],
-                stream=True,
-            )
-            response = "".join(chunk["choices"][0]["delta"]["content"] for chunk in stream)
-            st.markdown(response)
-            st.session_state.messages.append({"role": "assistant", "content": response})
+        try:
+            with st.chat_message("assistant"):
+                stream = client.chat.completions.create(
+                    model=st.session_state["openai_model"],
+                    messages=[
+                        {"role": m["role"], "content": m["content"]}
+                        for m in st.session_state.messages
+                    ],
+                    stream=True,
+                )
+                response = "".join(chunk["choices"][0]["delta"]["content"] for chunk in stream)
+                st.markdown(response)
+                st.session_state.messages.append({"role": "assistant", "content": response})
+        except error.AuthenticationError:
+            st.error("Erro de autenticação. Verifique sua chave de API.")
+        except error.APIError as e:
+            st.error(f"Erro na API: {str(e)}")
+        except Exception as e:
+            st.error(f"Ocorreu um erro inesperado: {str(e)}")
 
     # Ajuste as linhas abaixo de acordo com a disponibilidade dos dados
     # with coluna1:
