@@ -13,7 +13,7 @@ def plot_students_per_year(filtered_df):
     # Atualizar o layout para incluir uma borda
     fig.update_layout(
         width=250,  # Largura em pixels
-        height=210,  # Altura em pixels
+        height=220,  # Altura em pixels
         #margin=dict(l=40, r=40, t=40, b=40),  # Margens para simular a borda
         #paper_bgcolor='white',  # Cor de fundo do papel
         #plot_bgcolor='white',  # Cor de fundo do gráfico

@@ -62,7 +62,7 @@ with tabs[0]:
 
     
     
-    st.table(df_g)
+    #st.table(df_g)
 
 with tabs[1]:
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
