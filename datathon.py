@@ -46,8 +46,17 @@ with tabs[0]:
         max_value=int(df_melted['Ano'].max()),
         value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max()))
     )
-
+    # Injetar CSS para ajustar o tamanho do container
+    st.markdown("""
+    <style>
+    .custom-container {
+        max-width: 800px; /* Largura máxima do container em pixels */
+        margin: 0 auto;   /* Centralizar horizontalmente */
+    }
+    </style>
+    """, unsafe_allow_html=True)
     with st.container():
+        st.markdown('<div class="custom-container">', unsafe_allow_html=True)
         st.write("Histograma")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
         fig, df_g = visualizations.plot_students_per_year(filtered_df)
