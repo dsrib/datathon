@@ -15,21 +15,21 @@ def plot_students_per_year(filtered_df):
         width=250,  # Largura em pixels
         height=210,  # Altura em pixels
         #margin=dict(l=40, r=40, t=40, b=40),  # Margens para simular a borda
-        paper_bgcolor='white',  # Cor de fundo do papel
-        plot_bgcolor='white',  # Cor de fundo do gráfico
-        shapes=[
-            dict(
-                type='rect',
-                xref='paper', yref='paper',
-                x0=0, y0=0,
-                x1=1, y1=1,
-                line=dict(
-                    color='black',  # Cor da borda
-                    width=2,  # Largura da borda
-                ),
-                layer='below'  # Coloca a borda abaixo dos traços do gráfico
-            )
-        ]
+        #paper_bgcolor='white',  # Cor de fundo do papel
+        #plot_bgcolor='white',  # Cor de fundo do gráfico
+        #shapes=[
+        #    dict(
+        #        type='rect',
+        #        xref='paper', yref='paper',
+        #        x0=0, y0=0,
+        #        x1=1, y1=1,
+        #        line=dict(
+        #            color='black',  # Cor da borda
+        #            width=2,  # Largura da borda
+        #        ),
+        #        layer='below'  # Coloca a borda abaixo dos traços do gráfico
+        #    )
+        #]
     )
     return fig, df_g
 
