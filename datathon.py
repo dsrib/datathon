@@ -14,7 +14,7 @@ import openpyxl
 from openai import OpenAI, error
 
 # Defina a chave da API do OpenAI diretamente ou use st.secrets
-OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", "sua-chave-de-api-aqui")
+OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", "sk-proj-YkvpYR2SHIGVs3meumFgT3BlbkFJlluu54tjfr6vAAOD3GdA")
 
 st.set_page_config(layout='wide')
 
