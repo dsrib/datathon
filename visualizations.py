@@ -8,7 +8,7 @@ def plot_students_per_year(filtered_df):
     fig = go.Figure()
     fig.update_layout(
         width=150,  # Largura em pixels
-        height=200,  # Altura em pixels
+        height=400,  # Altura em pixels
     )
 
     # Adiciona os traços do gráfico
