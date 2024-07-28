@@ -16,6 +16,12 @@ def convert_to_float64_with_two_decimal_places(df, columns):
     for col in columns:
         df[col] = pd.to_numeric(df[col], errors='coerce').round(2)
     return df
+
+# Função para carregar texto de arquivo
+def load_text(filename):
+    with open(filename, 'r', encoding='utf-8') as file:
+        return file.read()
+
 # Função para o chat com OpenAI
 def chat_with_openai():
     # Set OpenAI API key from Streamlit secrets

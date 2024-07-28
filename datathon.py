@@ -19,7 +19,7 @@ st.set_page_config(layout='wide')
 # Carregar dados
 df = pd.read_csv("PEDE_PASSOS_DATASET_FIAP.csv", sep=';')
 # Carregar texto pré-formatado
-descricao = load_text('AboutPassos.txt')
+descricao = functions.load_text('AboutPassos.txt')
 # Tabelas filtradas
 df_2020 = functions.filter_columns(df, ['2021', '2022'])
 df_2021 = functions.filter_columns(df, ['2020', '2022'])
