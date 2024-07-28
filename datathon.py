@@ -55,7 +55,7 @@ df_melted['indicador2'] = df_melted['indicador'].apply(lambda x: str(x[:-5]))
 st.title('PASSOS MÁGICOS')
 aba1, aba2 = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos'])
 
-if aba1:
+with aba1:
     st.subheader("O que é a Passos Mágicos?")
     st.markdown("A Passos Mágicos é uma instituição dedicada a promover o desenvolvimento acadêmico e pessoal dos alunos através de programas educativos e sociais.")
     
@@ -87,7 +87,7 @@ if aba1:
     st.plotly_chart(fig)
     st.table(df_g)
     
-if aba2:
+with aba2:
     # Se aba2 está ativa, a sidebar é esvaziada
     st.sidebar.empty()
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
