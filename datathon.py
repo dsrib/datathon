@@ -11,6 +11,7 @@ from sklearn.metrics import accuracy_score, mean_absolute_error, mean_squared_er
 from statsmodels.tsa.seasonal import seasonal_decompose
 import openpyxl
 import functions
+import visualizations
 # Defina a chave da API do OpenAI diretamente ou use st.secrets
 #OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", "sua-chave-de-api-aqui")
 
@@ -50,20 +51,8 @@ with tabs[0]:
     )
 
     filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-    df_g = filtered_df[filtered_df['indicador'].str.contains('INDE')]
-    df_g = df_g[df_g['value'].notna()]
-    df_g = df_g.drop_duplicates(subset=['Ano', 'NOME']).groupby(['Ano']).size().reset_index(name='Qtd Alunos')
-
-    # Gráficos
-    fig = go.Figure()
-    fig.update_layout(
-        width=800,  # Largura em pixels
-        height=500,  # Altura em pixels
-    )
-
-    # Adiciona os traços do gráfico
-    fig.add_trace(go.Bar(x=df_g['Ano'], y=df_g['Qtd Alunos'], name='Quantidade de Alunos', marker_color='midnightblue'))
-    fig.update_xaxes(type='category')  # Garantindo que o eixo x seja categórico
+    
+    fig, df_g = visualizations.plot_students_per_year(filtered_df)
 
     st.plotly_chart(fig)
     st.table(df_g)
