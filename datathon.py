@@ -85,7 +85,7 @@ aba1, aba2 = st.tabs(['Visão Geral','Relatório Geral dos Alunos'])
 with aba1:
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
     st.table(df_g)
-
+    #chat_with_openai()
 with aba2:
     # URL do relatório do Power BI
     power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
@@ -143,4 +143,4 @@ def chat_with_openai():
             st.error(f"Ocorreu um erro inesperado: {str(e)}")
 
 # Chama a função do chat
-chat_with_openai()
+
