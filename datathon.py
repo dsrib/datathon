@@ -11,7 +11,7 @@ from sklearn.metrics import accuracy_score, mean_absolute_error, mean_squared_er
 from statsmodels.tsa.seasonal import seasonal_decompose
 #from prophet import Prophet  # Descomente se for usar o Prophet
 import openpyxl
-from openai import OpenAI, error
+#from openai import OpenAI, error
 
 # Defina a chave da API do OpenAI diretamente ou use st.secrets
 #OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", "sk-proj-4HE1Em9uTJ7zYNgBkbmMT3BlbkFJtEos3KxsMmVdkedytjjh")
