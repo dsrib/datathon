@@ -49,6 +49,7 @@ with tabs[0]:
 
     with st.container():
         st.write("Histograma")
+        filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
         fig, df_g = visualizations.plot_students_per_year(filtered_df)
         st.plotly_chart(fig)
 
@@ -57,7 +58,7 @@ with tabs[0]:
     
    
 
-    filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
+
     
     
     st.table(df_g)
