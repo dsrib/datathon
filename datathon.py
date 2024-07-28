@@ -86,7 +86,7 @@ aba1, aba2 = st.tabs(['Visão Geral','Relatório Geral dos Alunos'])
 with aba1:
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
         # Set OpenAI API key from Streamlit secrets
-    client = OpenAI(api_key=st.secrets[OPENAI_API_KEY])
+    client = OpenAI(api_key=OPENAI_API_KEY)
     # Set a default model
     if "openai_model" not in st.session_state:
         st.session_state["openai_model"] = "gpt-3.5-turbo"
