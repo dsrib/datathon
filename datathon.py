@@ -38,10 +38,7 @@ st.title('PASSOS MÁGICOS')
 tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos'])
 
 with tabs[0]:
-    st.subheader("O que é a Passos Mágicos?")
-    st.markdown(descricao)
-    
-    # Sidebar com filtros (visível apenas na aba "Visão Geral")
+     # Sidebar com filtros (visível apenas na aba "Visão Geral")
     st.sidebar.header("Filtros de Ano")
     min_year, max_year = st.sidebar.slider(
         'Selecione o intervalo de anos',
@@ -50,11 +47,19 @@ with tabs[0]:
         value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max()))
     )
 
+    with st.container():
+        st.write("Histograma")
+        fig, df_g = visualizations.plot_students_per_year(filtered_df)
+        st.plotly_chart(fig)
+
+    st.subheader("O que é a Passos Mágicos?")
+    st.markdown(descricao)
+    
+   
+
     filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
     
-    fig, df_g = visualizations.plot_students_per_year(filtered_df)
-
-    st.plotly_chart(fig)
+    
     st.table(df_g)
 
 with tabs[1]:
