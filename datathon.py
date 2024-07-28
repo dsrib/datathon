@@ -49,11 +49,19 @@ with tabs[0]:
     )
     
     # Adicionar caixa de seleção única na barra lateral
-    st.sidebar.header("Seleção de Ano")
-    indicador = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
-    indicador_1 = st.sidebar.selectbox(
-        'Escolha um indicador',
-        options=indicador,
+    st.sidebar.header("Indicadores")
+    indicadorx = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
+    indicador_x = st.sidebar.selectbox(
+        'Indicador para eixo y',
+        options=indicadorx,
+        index=0  # Define o ano inicial selecionado
+    )
+    # Adicionar caixa de seleção única na barra lateral
+
+    indicadory = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
+    indicador_y = st.sidebar.selectbox(
+        'Indicador para eixo x',
+        options=indicadory,
         index=0  # Define o ano inicial selecionado
     )
 

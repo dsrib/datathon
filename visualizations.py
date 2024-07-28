@@ -8,7 +8,15 @@ def plot_students_per_year(filtered_df):
     df_g = df_g.drop_duplicates(subset=['Ano', 'NOME']).groupby(['Ano']).size().reset_index(name='Qtd Alunos')
     fig = go.Figure()
     # Adiciona os traços do gráfico
-    fig.add_trace(go.Bar(x=df_g['Ano'], y=df_g['Qtd Alunos'], name='Quantidade de Alunos', marker_color='midnightblue'))
+        # Adiciona os traços do gráfico com rótulos
+    fig.add_trace(go.Bar(
+        x=df_g['Ano'],
+        y=df_g['Qtd Alunos'],
+        name='Quantidade de Alunos',
+        marker_color='midnightblue',
+        text=df_g['Qtd Alunos'],  # Adiciona os rótulos nas barras
+        textposition='auto'  # Posições automáticas dos rótulos
+    ))
     fig.update_xaxes(type='category')  # Garantindo que o eixo x seja categórico
     # Atualizar o layout para incluir uma borda
     fig.update_layout(
