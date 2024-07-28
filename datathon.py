@@ -81,7 +81,7 @@ fig.update_xaxes(type='category')  # Garantindo que o eixo x seja categórico
 
 ## Visualização no Streamlit
 st.title('PASSOS MÁGICOS')
-aba1, aba2 = st.tabs(['Visão Geral','Power BI'])
+aba1, aba2 = st.tabs(['Visão Geral','Relatório Geral dos Alunos'])
 
 with aba1:
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
