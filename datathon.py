@@ -18,7 +18,8 @@ st.set_page_config(layout='wide')
 
 # Carregar dados
 df = pd.read_csv("PEDE_PASSOS_DATASET_FIAP.csv", sep=';')
-
+# Carregar texto pré-formatado
+descricao = load_text('AboutPassos.txt')
 # Tabelas filtradas
 df_2020 = functions.filter_columns(df, ['2021', '2022'])
 df_2021 = functions.filter_columns(df, ['2020', '2022'])
@@ -37,7 +38,7 @@ tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos'])
 
 with tabs[0]:
     st.subheader("O que é a Passos Mágicos?")
-    st.markdown("A Passos Mágicos é uma instituição dedicada a promover o desenvolvimento acadêmico e pessoal dos alunos através de programas educativos e sociais.")
+    st.markdown(descricao)
     
     # Sidebar com filtros (visível apenas na aba "Visão Geral")
     st.sidebar.header("Filtros de Ano")
