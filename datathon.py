@@ -86,21 +86,17 @@ aba1, aba2 = st.tabs(['Visão Geral','Relatório Geral dos Alunos'])
 with aba1:
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
         # Set OpenAI API key from Streamlit secrets
-"""     client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
     # Set a default model
     if "openai_model" not in st.session_state:
         st.session_state["openai_model"] = "gpt-3.5-turbo"
-
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
-
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
-
     # Accept user input
     if prompt := st.chat_input("What is up?"):
         # Add user message to chat history
@@ -119,7 +115,7 @@ with aba1:
                 stream=True,
             )
             response = st.write_stream(stream)
-        st.session_state.messages.append({"role": "assistant", "content": response}) """
+        st.session_state.messages.append({"role": "assistant", "content": response}) 
     # Ajuste as linhas abaixo de acordo com a disponibilidade dos dados
     #with coluna1:
     #     st.metric('Máximo', formata_numero(df0['Brent (F0B)'].max(), ''))
