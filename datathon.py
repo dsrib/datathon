@@ -92,7 +92,7 @@ if aba1:
 
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
     st.table(df_g)
-
+    #chat_with_openai()
 if aba2:
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
     st.markdown("Este relatório tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos.")
@@ -149,7 +149,7 @@ def chat_with_openai():
             st.error(f"Ocorreu um erro inesperado: {str(e)}")
 
 # Chama a função do chat
-chat_with_openai()
+
 
 # Controle da visibilidade da sidebar
 if not show_sidebar:
