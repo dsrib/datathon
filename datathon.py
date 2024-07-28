@@ -84,7 +84,20 @@ aba1, aba2 = st.tabs(['Visão Geral','Relatório Geral dos Alunos'])
 
 with aba1:
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
-    
+    st.table(df_g)
+
+with aba2:
+    # URL do relatório do Power BI
+    power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
+
+    st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
+    st.markdown("Este é um tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos")
+
+    # Incorporando o relatório do Power BI usando um iframe
+    st.components.v1.iframe(power_bi_report_url, width=800, height=600, scrolling=True)
+
+## Função para o chat com OpenAI
+def chat_with_openai():
     # Set OpenAI API key from Streamlit secrets
     client = OpenAI(api_key=OPENAI_API_KEY)
 
@@ -129,27 +142,5 @@ with aba1:
         except Exception as e:
             st.error(f"Ocorreu um erro inesperado: {str(e)}")
 
-    # Ajuste as linhas abaixo de acordo com a disponibilidade dos dados
-    # with coluna1:
-    #     st.metric('Máximo', formata_numero(df0['Brent (F0B)'].max(), ''))
-    # with coluna2:
-    #     st.metric('Mínimo', formata_numero(df0['Brent (F0B)'].min(), ''))
-    # with coluna3:
-    #     st.metric('Média', formata_numero(df0['Brent (F0B)'].mean(), ''))
-    # with coluna4:
-    #     st.metric('', '_')
-    #     fig_consumo_fontes_energia = plotagem(dados)
-    #     st.plotly_chart(fig_consumo_fontes_energia)
-    # st.plotly_chart(fig)
-
-st.table(df_g)
-
-with aba2:
-    # URL do relatório do Power BI
-    power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
-
-    st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
-    st.markdown("Este é um tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos")
-
-    # Incorporando o relatório do Power BI usando um iframe
-    st.components.v1.iframe(power_bi_report_url, width=800, height=600, scrolling=True)
+# Chama a função do chat
+chat_with_openai()
