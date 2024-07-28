@@ -20,12 +20,6 @@ st.set_page_config(layout='wide')
 df = pd.read_csv("PEDE_PASSOS_DATASET_FIAP.csv", sep=';')
 
 # Função de filtragem de colunas
-def filter_columns(df, filters: list):
-    selected_columns = [True] * len(df.columns)  # Inicializa todas as colunas como True
-    for index, column in enumerate(df.columns):
-        if any(filter in column for filter in filters):
-            selected_columns[index] = False
-    return df[df.columns[selected_columns]]
 
 # Função de limpeza do dataset
 def cleaning_dataset(df):
@@ -40,9 +34,9 @@ def convert_to_float64_with_two_decimal_places(df, columns):
     return df
 
 # Tabelas filtradas
-df_2020 = filter_columns(df, ['2021', '2022'])
-df_2021 = filter_columns(df, ['2020', '2022'])
-df_2022 = filter_columns(df, ['2020', '2021'])
+df_2020 = function.filter_columns(df, ['2021', '2022'])
+df_2021 = function.filter_columns(df, ['2020', '2022'])
+df_2022 = function.filter_columns(df, ['2020', '2021'])
 
 df_melted = df.melt(id_vars=df.columns[~df.columns.str.contains('2020|2021|2022')],
                     value_vars=df.columns[df.columns.str.contains('2020|2021|2022')],
@@ -86,7 +80,7 @@ with aba1:
 
     st.plotly_chart(fig)
     st.table(df_g)
-    
+    #chat_with_openai()
 with aba2:
     # Se aba2 está ativa, a sidebar é esvaziada
     st.sidebar.empty()
@@ -145,4 +139,4 @@ def chat_with_openai():
             st.error(f"Ocorreu um erro inesperado: {str(e)}")
 
 # Chama a função do chat
-#chat_with_openai()
+
