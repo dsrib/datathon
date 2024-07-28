@@ -10,7 +10,7 @@ from statsforecast.models import Naive, SeasonalNaive, SeasonalWindowAverage
 from sklearn.metrics import accuracy_score, mean_absolute_error, mean_squared_error
 from statsmodels.tsa.seasonal import seasonal_decompose
 import openpyxl
-
+import functions
 # Defina a chave da API do OpenAI diretamente ou use st.secrets
 #OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", "sua-chave-de-api-aqui")
 
@@ -20,9 +20,9 @@ st.set_page_config(layout='wide')
 df = pd.read_csv("PEDE_PASSOS_DATASET_FIAP.csv", sep=';')
 
 # Tabelas filtradas
-df_2020 = function.filter_columns(df, ['2021', '2022'])
-df_2021 = function.filter_columns(df, ['2020', '2022'])
-df_2022 = function.filter_columns(df, ['2020', '2021'])
+df_2020 = functions.filter_columns(df, ['2021', '2022'])
+df_2021 = functions.filter_columns(df, ['2020', '2022'])
+df_2022 = functions.filter_columns(df, ['2020', '2021'])
 
 df_melted = df.melt(id_vars=df.columns[~df.columns.str.contains('2020|2021|2022')],
                     value_vars=df.columns[df.columns.str.contains('2020|2021|2022')],
