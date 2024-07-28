@@ -145,4 +145,4 @@ def chat_with_openai():
             st.error(f"Ocorreu um erro inesperado: {str(e)}")
 
 # Chama a função do chat
-chat_with_openai()
+#chat_with_openai()
