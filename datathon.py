@@ -40,13 +40,13 @@ with tabs[0]:
     st.markdown("A Passos Mágicos é uma instituição dedicada a promover o desenvolvimento acadêmico e pessoal dos alunos através de programas educativos e sociais.")
     
     # Sidebar com filtros (visível apenas na aba "Visão Geral")
-    with st.sidebar:
-        min_year, max_year = st.slider(
-            'Selecione o intervalo de anos',
-            min_value=int(df_melted['Ano'].min()),
-            max_value=int(df_melted['Ano'].max()),
-            value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max()))
-        )
+    st.sidebar.header("Filtros de Ano")
+    min_year, max_year = st.sidebar.slider(
+        'Selecione o intervalo de anos',
+        min_value=int(df_melted['Ano'].min()),
+        max_value=int(df_melted['Ano'].max()),
+        value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max()))
+    )
 
     filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
     df_g = filtered_df[filtered_df['indicador'].str.contains('INDE')]
@@ -68,8 +68,6 @@ with tabs[0]:
     st.table(df_g)
 
 with tabs[1]:
-    # Se aba "Relatório Geral dos Alunos" está ativa, a sidebar é esvaziada
-    st.sidebar.empty()
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
     st.markdown("Este relatório tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos.")
 
