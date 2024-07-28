@@ -19,7 +19,7 @@ def convert_to_float64_with_two_decimal_places(df, columns):
 # Função para o chat com OpenAI
 def chat_with_openai():
     # Set OpenAI API key from Streamlit secrets
-    client = OpenAI(api_key=OPENAI_API_KEY)
+    #client = OpenAI(api_key=OPENAI_API_KEY)
 
     # Set a default model
     if "openai_model" not in st.session_state:

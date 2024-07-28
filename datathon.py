@@ -33,9 +33,9 @@ df_melted['indicador2'] = df_melted['indicador'].apply(lambda x: str(x[:-5]))
 
 # Visualização no Streamlit
 st.title('PASSOS MÁGICOS')
-aba1, aba2 = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos'])
+selected_tab = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos'])
 
-with aba1:
+if selected_tab == 'Visão Geral':
     st.subheader("O que é a Passos Mágicos?")
     st.markdown("A Passos Mágicos é uma instituição dedicada a promover o desenvolvimento acadêmico e pessoal dos alunos através de programas educativos e sociais.")
     
@@ -67,7 +67,7 @@ with aba1:
     st.plotly_chart(fig)
     st.table(df_g)
     #chat_with_openai()
-with aba2:
+elif selected_tab == 'Relatório Geral dos Alunos':
     # Se aba2 está ativa, a sidebar é esvaziada
     st.sidebar.empty()
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
