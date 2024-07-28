@@ -19,20 +19,6 @@ st.set_page_config(layout='wide')
 # Carregar dados
 df = pd.read_csv("PEDE_PASSOS_DATASET_FIAP.csv", sep=';')
 
-# Função de filtragem de colunas
-
-# Função de limpeza do dataset
-def cleaning_dataset(df):
-    _df = df.dropna(subset=df.columns.difference(['NOME']), how='all')  # Remove linhas com todas as colunas NaN, exceto 'NOME'
-    _df = _df[~_df.isna().all(axis=1)]  # Remove linhas com apenas NaN
-    return _df
-
-# Função para converter colunas para float64 com duas casas decimais
-def convert_to_float64_with_two_decimal_places(df, columns):
-    for col in columns:
-        df[col] = pd.to_numeric(df[col], errors='coerce').round(2)
-    return df
-
 # Tabelas filtradas
 df_2020 = function.filter_columns(df, ['2021', '2022'])
 df_2021 = function.filter_columns(df, ['2020', '2022'])
@@ -91,52 +77,4 @@ with aba2:
     power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
     # Incorporando o relatório do Power BI usando um iframe
     st.components.v1.iframe(power_bi_report_url, width=1000, height=600, scrolling=True)
-
-# Função para o chat com OpenAI
-def chat_with_openai():
-    # Set OpenAI API key from Streamlit secrets
-    client = OpenAI(api_key=OPENAI_API_KEY)
-
-    # Set a default model
-    if "openai_model" not in st.session_state:
-        st.session_state["openai_model"] = "gpt-3.5-turbo"
-
-    # Initialize chat history
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-
-    # Display chat messages from history on app rerun
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-    # Accept user input
-    if prompt := st.chat_input("What is up?"):
-        # Add user message to chat history
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        # Display user message in chat message container
-        with st.chat_message("user"):
-            st.markdown(prompt)
-        # Display assistant response in chat message container
-        try:
-            with st.chat_message("assistant"):
-                stream = client.chat.completions.create(
-                    model=st.session_state["openai_model"],
-                    messages=[
-                        {"role": m["role"], "content": m["content"]}
-                        for m in st.session_state.messages
-                    ],
-                    stream=True,
-                )
-                response = "".join(chunk["choices"][0]["delta"]["content"] for chunk in stream)
-                st.markdown(response)
-                st.session_state.messages.append({"role": "assistant", "content": response})
-        except error.AuthenticationError:
-            st.error("Erro de autenticação. Verifique sua chave de API.")
-        except error.APIError as e:
-            st.error(f"Erro na API: {str(e)}")
-        except Exception as e:
-            st.error(f"Ocorreu um erro inesperado: {str(e)}")
-
-# Chama a função do chat
 
