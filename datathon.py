@@ -73,6 +73,8 @@ with tabs[0]:
 
     st.subheader("O que é a Passos Mágicos?")
     st.markdown(descricao)
+    st.subheader("O que fazemos?")  
+    st.markdown(descricao)
     
    
 
