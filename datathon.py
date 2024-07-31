@@ -73,8 +73,10 @@ with tabs[0]:
 
     st.subheader("O que é a Passos Mágicos?")
     st.markdown(descricao)
-    st.subheader("O que fazemos?")  
-    st.write( A ONG se dedica em oferecer uma educação de qualidade, suporte psicológico e a ampliar a visão de mundo de cada aluno impactado. Disponibilizamos aulas de alfabetização, língua portuguesa e matemática para crianças e adolescentes. Os alunos são divididos conforme o nível de conhecimento, determinado por meio de uma prova de sondagem realizada ao ingressarem no Passos Mágicos. Eles são então colocados em turmas que vão desde a alfabetização até o nível 8, sendo:)
+    st.subheader("O que fazemos?") 
+    st.subheader("Programas Especiais:") 
+    st.subheader("Eventos e Ações Socias:")
+  
     
    
 
