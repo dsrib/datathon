@@ -76,11 +76,8 @@ with tabs[0]:
     st.subheader("O que fazemos?") 
     st.markdown("A ONG se dedica em oferecer uma educação de qualidade, suporte psicológico e a ampliar a visão de mundo de cada aluno impactado. Disponibilizamos aulas de alfabetização, língua portuguesa e matemática para crianças e adolescentes. Os alunos são divididos conforme o nível de conhecimento, determinado por meio de uma prova de sondagem realizada ao ingressarem no Passos Mágicos. Eles são então colocados em turmas que vão desde a alfabetização até o nível 8, sendo:") 
     st.subheader("Programas Especiais:") 
-    st.writer{
-      'Educacionais': ['Programa Vem Ser: projeto criado a partir da parceria entre a Associação Passos Mágicos e a Rede Decisão, que cedeu algumas de suas plataformas de ensino para que fossem utilizadas com nossos alunos do ensino médio e vestibulando'],
-      'Assistência Psicológica': ['A Associação Passos Mágicos acredita que, para otimizar o desempenho dos alunos, é essencial não apenas o conhecimento acadêmico, mas também o suporte emocional. É fundamental abordar e resolver os problemas que podem dificultar o aprendizado. Para isso, desenvolvemos um trabalho com diversas dinâmicas, onde nossas psicólogas atuam tanto no comportamento individual quanto no coletivo dos jovens.'],
-      'Atividades Culturais': ['Na Associação Passos Mágicos, acreditamos que integrar os alunos a diversos elementos culturais enriquece seu aprendizado e formação. Por isso, além das aulas, organizamos atividades semanais em museus, parques, eventos e outros locais que estimulam a curiosidade dos jovens.']
-    }
+    st.header('Educacionais:Programa Vem Ser: projeto criado a partir da parceria entre a Associação Passos Mágicos e a Rede Decisão, que cedeu algumas de suas plataformas de ensino para que fossem utilizadas com nossos alunos do ensino médio e vestibulando')
+      
     st.subheader("Eventos e Ações Socias:")
     st.markdown("Anualmente, são promovidas campanhas de arrecadação com a finalidade de presentear as crianças e adolescentes do projeto Passos Mágicos.") 
     
