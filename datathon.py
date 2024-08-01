@@ -122,9 +122,14 @@ with tabs[1]:
 
 with tabs[2]:
     st.title("Indicadores de Impacto no ano de 2023:")
-    col1,col2,col3,col4 =st.columns(4)
+    col1,col2,col3,col4,col5 =st.columns(5)
     with col1:
       st.markdown("'4400'pessoas impactadas (Considerando a média de 4 familiares por aluno)")
-      
-   
-
+    with col2:
+      st.markdown("'1100'Alunos no programa de Aceleração do Conhecimento") 
+    with col3:
+      st.markdown("'98'Bolsistas em instituições de ensino particular")  
+    with col4:
+      st.markdown("'103'Universitários em instituições de ensino superior")
+     with col5:
+      st.markdown("'41'Alunos formados em instituições de ensino superior")  
