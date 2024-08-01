@@ -35,7 +35,7 @@ df_melted['indicador2'] = df_melted['indicador'].apply(lambda x: str(x[:-5]))
 
 # Visualização no Streamlit
 st.title('PASSOS MÁGICOS')
-tabs = st.tabs(['Visão Geral', 'Indicadores de Sucesso', 'Relatório Geral dos Alunos'])
+tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos', 'Indicadores de Sucesso'])
 
 with tabs[0]:
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
@@ -120,11 +120,11 @@ with tabs[1]:
     # Incorporando o relatório do Power BI usando um iframe
     st.components.v1.iframe(power_bi_report_url, width=1000, height=600, scrolling=True)
 
- #with aba[2]:
-    #st.title("Indicadores de Impacto no ano de 2023:")
-    #col1,col2,col3,col4 =st.columns(4)
-    #with col1:
-      #st.markdown("'4400'pessoas impactadas (Considerando a média de 4 familiares por aluno)")
+with tabs[2]:
+    st.title("Indicadores de Impacto no ano de 2023:")
+    col1,col2,col3,col4 =st.columns(4)
+    with col1:
+      st.markdown("'4400'pessoas impactadas (Considerando a média de 4 familiares por aluno)")
       
    
 
