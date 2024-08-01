@@ -120,7 +120,7 @@ with tabs[1]:
     # Incorporando o relatório do Power BI usando um iframe
     st.components.v1.iframe(power_bi_report_url, width=1000, height=600, scrolling=True)
 
- with aba2:
+ with aba[2]:
     st.title("Indicadores de Impacto no ano de 2023:")
     col1,col2,col3,col4 =st.columns(4)
     with col1:
