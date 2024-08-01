@@ -93,10 +93,19 @@ with tabs[0]:
     st.header("Atividades Culturais:")
     st.markdown("Na Associação Passos Mágicos, acreditamos que integrar os alunos a diversos elementos culturais enriquece seu aprendizado e formação. Por isso, além das aulas, organizamos atividades semanais em museus, parques, eventos e outros locais que estimulam a curiosidade dos jovens.")
     st.title("Eventos e Ações Socias:")
-    st.markdown("Anualmente, são promovidas campanhas de arrecadação com a finalidade de presentear as crianças e adolescentes do projeto Passos Mágicos.") 
-    
-   
-
+    st.markdown("Anualmente, são promovidas campanhas de arrecadação com a finalidade de presentear as crianças e adolescentes do projeto Passos Mágicos. Sendo elas:")
+    st.header("Materiais Escolares:")
+    st.markdown("Campanha de coleta de doações de materiais para estudantes bolsistas e todos os demais alunos.")  
+    st.header("Páscoa Mágica:")
+    st.markdown("Coleta de ovos de Páscoa, barras e caixas de chocolate para distribuição aos alunos.")
+    st.header("Dia das Crianças:")
+    st.markdown("Coleta de brinquedos para os alunos.")            
+    st.header("Campanha do Agasalho:")
+    st.markdown("Arrecadação de roupas de inverno para os alunos e suas famílias.")            
+    st.header("Natal Mágico:")
+    st.markdown("São entregues presentes cuidadosamente escolhidos para os alunos, e as sacolas, montadas a partir das doações, são distribuídas aos familiares das crianças.")            
+    st.header("Confraternização de Encerramento:")
+    st.markdown("Todo ano, é realizado um evento de confraternização para celebrar as conquistas e realizações do ano que passou.")
 
     
     
