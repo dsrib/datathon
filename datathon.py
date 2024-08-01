@@ -131,5 +131,5 @@ with tabs[2]:
       st.markdown("'98'Bolsistas em instituições de ensino particular")  
     with col4:
       st.markdown("'103'Universitários em instituições de ensino superior")
-     with col5:
+    with col5:
       st.markdown("'41'Alunos formados em instituições de ensino superior")  
