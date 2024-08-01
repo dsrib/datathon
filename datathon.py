@@ -35,7 +35,7 @@ df_melted['indicador2'] = df_melted['indicador'].apply(lambda x: str(x[:-5]))
 
 # Visualização no Streamlit
 st.title('PASSOS MÁGICOS')
-tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos'])
+tabs = st.tabs(['Visão Geral', 'Indicadores de Sucesso', 'Relatório Geral dos Alunos'])
 
 with tabs[0]:
     coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
