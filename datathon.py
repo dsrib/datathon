@@ -124,7 +124,7 @@ with tabs[2]:
     st.title("Indicadores de Impacto no ano de 2023:")
     col1,col2,col3,col4,col5 =st.columns(5)
     with col1:
-       st.markdown(f"<h2 style='{cor_estilizada}'>4400</h2> <span style='{fonte_negrito}'>pessoas impactadas (Considerando a média de 4 familiares por aluno)")</span>")
+       st.markdown(f"<h2 style='{cor_estilizada}'>4400</h2> <span style='{fonte_negrito}'>pessoas impactadas (Considerando a média de 4 familiares por aluno)")</span>", unsafe_allow_html=True)
     with col2:
       st.markdown("'1100'Alunos no programa de Aceleração do Conhecimento") 
     with col3:
@@ -133,3 +133,6 @@ with tabs[2]:
       st.markdown("'103'Universitários em instituições de ensino superior")
     with col5:
       st.markdown("'41'Alunos formados em instituições de ensino superior")  
+    
+    st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True) #Linha 
+    st.markdown(f"<p style='text-align: justify;color:  #292F39;'> Variação do número de alunos beneficiados, bem como à relação entre bolsistas e universitários nas escolas parceiras ao longo do tempo:</p>", unsafe_allow_html = True)
