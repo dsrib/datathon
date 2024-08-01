@@ -120,6 +120,13 @@ with tabs[1]:
     # Incorporando o relatório do Power BI usando um iframe
     st.components.v1.iframe(power_bi_report_url, width=1000, height=600, scrolling=True)
 
+     # Adicionando estilos CSS para a cor da borda de todas as células
+    html_estilizado = html.replace('<th>', '<th style=\'border: 2px solid #1A4A6A; color:  #292F39;text-align: center;\'>').replace('<td>', '<td style=\'border: 2px solid #1A4A6A;color:  #292F39; text-align: center;\'>')
+
+    # Exibir a tabela estilizada no Streamlit
+    st.write("<style>table {{ width: 100%; border-collapse: collapse; }} th, td {{ padding: 10px; }}</style>{}".format(html_estilizado), unsafe_allow_html=True)
+
+
 with tabs[2]:
     st.title("Indicadores de Impacto no ano de 2023:")
     col1,col2,col3,col4,col5 =st.columns(5)
