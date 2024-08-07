@@ -135,21 +135,32 @@ with tabs[2]:
     with col5:
       st.markdown("'41'Alunos formados em instituições de ensino superior")  
 
-    dados= [(2016,70,26,0),(2017,300,35,0),(2018,550,80,1),(2019,812,106,2),(2020,841,112,26),(2021,824,133,51),(2022,970,112,71),(2023,1100,100,94)]
+    
     #Dados para gráfico
-    Tempo = ['2016', '2017', '2018', '2019','2020','2021','2022','2023']
-    Alunos = [70, 300, 550, 812, 841, 824, 970, 1100]
-    Bolsistas = [26,35,80,106,112,133,112,100 ]
-    Universitários = [0,0,1,2,26,51,71,94]
+    data = {
+          'Tempo' = ['2016', '2017', '2018', '2019','2020','2021','2022','2023']
+          'Alunos' = [70, 300, 550, 812, 841, 824, 970, 1100],
+          'Bolsistas' = [26,35,80,106,112,133,112,100 ],
+          'Universitários' = [0,0,1,2,26,51,71,94]
+    }
+    df = pd.DataFrame(data)
     # Criando o gráfico de linha
-    st.figure(figsize=(9, 5))
-    st.plot(Tempo, Alunos, marker='o', label='Alunos')
-    st.plot(Tempo, Bolsistas, marker='s', label='Bolsistas')
-    st.plot(Tempo, Universitários, marker='^', label='Universitários')
+    plt.figure(figsize=(10, 6))
+    plt.plot(df['Data'], df['Alunos'], marker='o', label='Alunos')
+    plt.plot(df['Data'], df['Bolsistas'], marker='o', label='Bolsistas')
+    plt.plot(df['Data'], df['Universitários'], marker='o', label='Universitários')
     st.title('Alunos X Bolsistas X Universitários')
     st.xlabel('Ano')
     st.ylabel('Quantidade')
     st.legend()
     st.grid(True)
-    st.show()
+    # Salvando o gráfico
+    plt.savefig('grafico_linha_tempo.png')
+
+    # Exibindo o gráfico com o Streamlit
+    st.title('Alunos X Bolsistas X Universitários')
+    st.line_chart(df.set_index('Data'))
+
+    # Para exibir a imagem salva do gráfico
+    st.image('grafico_linha_tempo.png')
     
