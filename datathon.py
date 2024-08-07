@@ -149,11 +149,11 @@ with tabs[2]:
     plt.plot(df['Ano'], df['Alunos'], marker='o', label='Alunos')
     plt.plot(df['Ano'], df['Bolsistas'], marker='o', label='Bolsistas')
     plt.plot(df['Ano'], df['Universitários'], marker='o', label='Universitários')
-    st.title('Alunos X Bolsistas X Universitários')
-    st.xlabel('Ano')
-    st.ylabel('Quantidade')
-    st.legend()
-    st.grid(True)
+    plt.title('Alunos X Bolsistas X Universitários')
+    plt.xlabel('Ano')
+    plt.ylabel('Quantidade')
+    plt.legend()
+    plt.grid(True)
     # Salvando o gráfico
     plt.savefig('grafico_linha_tempo.png')
 
