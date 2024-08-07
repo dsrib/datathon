@@ -134,5 +134,8 @@ with tabs[2]:
       st.markdown("'103'Universitários em instituições de ensino superior")
     with col5:
       st.markdown("'41'Alunos formados em instituições de ensino superior")  
-    
+
+    dados= [(2016,70,26,0),(2017,300,35,0),(2018,550,80,1),(2019,812,606,2),(2020,841,112,26),(2021,824,133,51),(2022,970,112,71),(2023,1100,100,94)]
+    linha_do_tempo = pd.dados(dados,colunas=['Ano','Quantidade de Alunos','Bolsistas','Universitários'])
+    linha_do_tempo =['Bolsistas/Alunos']= linha_do_tempo['Bolsistas']/ linha_do_tempo['Quantidade de Alunos']*100
    
