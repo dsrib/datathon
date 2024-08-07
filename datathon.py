@@ -154,13 +154,14 @@ with tabs[2]:
     plt.ylabel('Quantidade')
     plt.legend()
     plt.grid(True)
+    plt.show()
     # Salvando o gráfico
-    plt.savefig('grafico_linha_tempo.png')
+    #plt.savefig('grafico_linha_tempo.png')
 
     # Exibindo o gráfico com o Streamlit
-    st.title('Alunos X Bolsistas X Universitários')
-    st.line_chart(df.set_index('Data'))
+    #st.title('Alunos X Bolsistas X Universitários')
+    #st.line_chart(df.set_index('Data'))
 
     # Para exibir a imagem salva do gráfico
-    st.image('grafico_linha_tempo.png')
+    #st.image('grafico_linha_tempo.png')
     
