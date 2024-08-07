@@ -142,7 +142,7 @@ with tabs[2]:
     Bolsistas = [26,35,80,106,112,133,112,100 ]
     Universitários = [0,0,1,2,26,51,71,94]
     # Criando o gráfico de linha
-    st.figure(figsize=(10, 6))
+    st.figure(figsize=(9, 5))
     st.plot(Tempo, Alunos, marker='o', label='Alunos')
     st.plot(Tempo, Bolsistas, marker='s', label='Bolsistas')
     st.plot(Tempo, Universitários, marker='^', label='Universitários')
