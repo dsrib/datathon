@@ -136,13 +136,12 @@ with tabs[2]:
       st.markdown("'41'Alunos formados em instituições de ensino superior")  
 
     
-    #Dados para gráfico
+    #Dados para gráfico de linha
     data = {
           'Ano' : ['2016', '2017', '2018', '2019','2020','2021','2022','2023'],
           'Alunos' : [70, 300, 550, 812, 841, 824, 970, 1100],
           'Bolsistas' : [26,35,80,106,112,133,112,100 ],
-          'Universitários' : [0,0,1,2,26,51,71,94]
-    }
+          'Universitários' : [0,0,1,2,26,51,71,94]}
     df = pd.DataFrame(data)
     # Criando o gráfico de linha
     plt.figure(figsize=(10, 6))
