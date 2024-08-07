@@ -142,14 +142,14 @@ with tabs[2]:
     Bolsistas = [26,35,80,106,112,133,112,100 ]
     Universitários = [0,0,1,2,26,51,71,94]
     # Criando o gráfico de linha
-    plt.figure(figsize=(10, 6))
-    plt.plot(Tempo, Alunos, marker='o', label='Alunos')
-    plt.plot(Tempo, Bolsistas, marker='s', label='Bolsistas')
-    plt.plot(Tempo, Universitários, marker='^', label='Universitários')
-    plt.title('Alunos X Bolsistas X Universitários')
-    plt.xlabel('Ano')
-    plt.ylabel('Quantidade')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+    st.figure(figsize=(10, 6))
+    st.plot(Tempo, Alunos, marker='o', label='Alunos')
+    st.plot(Tempo, Bolsistas, marker='s', label='Bolsistas')
+    st.plot(Tempo, Universitários, marker='^', label='Universitários')
+    st.title('Alunos X Bolsistas X Universitários')
+    st.xlabel('Ano')
+    st.ylabel('Quantidade')
+    st.legend()
+    st.grid(True)
+    st.show()
     
