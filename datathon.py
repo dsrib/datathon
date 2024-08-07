@@ -136,6 +136,20 @@ with tabs[2]:
       st.markdown("'41'Alunos formados em instituições de ensino superior")  
 
     dados= [(2016,70,26,0),(2017,300,35,0),(2018,550,80,1),(2019,812,606,2),(2020,841,112,26),(2021,824,133,51),(2022,970,112,71),(2023,1100,100,94)]
-    linha_do_tempo = pd.dados(dados,colunas=['Ano','Quantidade de Alunos','Bolsistas','Universitários'])
-    linha_do_tempo =['Bolsistas/Alunos']= linha_do_tempo['Bolsistas']/ linha_do_tempo['Quantidade de Alunos']*100
-   
+    #Dados
+    Tempo = ['2016', '2017', '2018', '2019','2020','2021','2022','2023']
+    Alunos = [70, 300, 550, 812, 841, 824, 970, 1100]
+    Bolsistas = [26,35,80,106,112,136,112,100 ]
+    Universitários = [0,0,1,2,26,51,71,94]
+    # Criando o gráfico de linha
+    plt.figure(figsize=(10, 6))
+    plt.plot(Tempo, Alunos, marker='o', label='Alunos')
+    plt.plot(Tempo, Bolsistas, marker='s', label='Bolsistas')
+    plt.plot(Tempo, Universitários, marker='^', label='Universitários')
+    plt.title('Alunos X Bolsistas X Universitários')
+    plt.xlabel('Ano')
+    plt.ylabel('Quantidade')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+    
