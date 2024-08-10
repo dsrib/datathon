@@ -82,6 +82,9 @@ with tabs[0]:
         st.metric(label="Alunos 2022", value=alunos_2022, delta=delta_2022, delta_color="inverse")
     with coluna4:
         st.metric(label="Alunos 2023", value=alunos_2023, delta=delta_2023, delta_color="inverse")
+    
+    st.table(df_g)
+    
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
     st.title("O que fazemos?") 
@@ -118,7 +121,7 @@ with tabs[0]:
     st.header("Confraternização de Encerramento:")
     st.markdown("Todo ano, é realizado um evento de confraternização para celebrar as conquistas e realizações do ano que passou.")
 
-    #st.table(df_g)
+    
 
 with tabs[1]:
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
