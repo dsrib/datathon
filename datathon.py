@@ -91,7 +91,7 @@ with tabs[0]:
                 unsafe_allow_html=True,
             )
         # Exibindo o gráfico no container com estilo aplicado
-        st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
+        st.plotly_chart(fig2, use_container_width=True, config={'responsive': True})
         
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
