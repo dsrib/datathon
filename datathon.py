@@ -69,14 +69,19 @@ with tabs[0]:
     alunos_2022 = df_melted[df_melted['Ano'] == 2022]['NOME'].nunique()
     alunos_2023 = df_melted[df_melted['Ano'] == 2023]['NOME'].nunique()
 
+    # Calcular a variação percentual entre anos
+    delta_2021 = alunos_2021 - alunos_2020
+    delta_2022 = alunos_2022 - alunos_2021
+    delta_2023 = alunos_2023 - alunos_2022
+
     with coluna1:
-        st.metric(label="Alunos 2021", value=alunos_2020.shape[0], delta=0, delta_color="inverse")
+        st.metric(label="Alunos 2021", value=alunos_2020, delta=0, delta_color="inverse")
     with coluna2:
-        st.metric(label="Alunos 2022", value=alunos_2021.shape[0], delta=alunos_2021.shape[0]/alunos_2020.shape[0], delta_color="inverse")
+        st.metric(label="Alunos 2022", value=alunos_2021, delta=delta_2021, delta_color="inverse")
     with coluna3:
-        st.metric(label="Alunos 2023", value=alunos_2022.shape[0], delta=alunos_2022.shape[0]/alunos_2021.shape[0], delta_color="inverse")
+        st.metric(label="Alunos 2023", value=alunos_2022, delta=delta_2022, delta_color="inverse")
     with coluna4:
-        st.metric(label="Alunos 2024", value=alunos_2023.shape[0], delta=alunos_2023.shape[0]/alunos_2022.shape[0], delta_color="inverse")
+        st.metric(label="Alunos 2024", value=alunos_2023, delta=delta_2023, delta_color="inverse")
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
     st.title("O que fazemos?") 
