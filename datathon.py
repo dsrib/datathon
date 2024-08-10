@@ -64,10 +64,10 @@ with tabs[0]:
         index=0  # Define o ano inicial selecionado
     )
 
-    alunos_2020 = df_melted[df_melted['Ano'] == 2020]
-    alunos_2021 = df_melted[df_melted['Ano'] == 2021]
-    alunos_2022 = df_melted[df_melted['Ano'] == 2022]
-    alunos_2023 = df_melted[df_melted['Ano'] == 2023]
+    alunos_2020 = df_melted[df_melted['Ano'] == 2020]['NOME'].nunique()
+    alunos_2021 = df_melted[df_melted['Ano'] == 2021]['NOME'].nunique()
+    alunos_2022 = df_melted[df_melted['Ano'] == 2022]['NOME'].nunique()
+    alunos_2023 = df_melted[df_melted['Ano'] == 2023]['NOME'].nunique()
 
     with coluna1:
         st.metric(label="Alunos 2021", value=alunos_2020.shape[0], delta=0, delta_color="inverse")
