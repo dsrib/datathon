@@ -68,5 +68,3 @@ def chat_with_openai():
         except Exception as e:
             st.error(f"Ocorreu um erro inesperado: {str(e)}")
 
-# Chama a função do chat
-

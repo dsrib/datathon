@@ -44,6 +44,7 @@ def plot_students_per_year(filtered_df):
 
 
 def scatter_plot(df, varx, vary, legend):
+    import numpy as np
     var_x = varx
     var_y = vary
     legenda = legend
