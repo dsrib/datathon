@@ -63,14 +63,20 @@ with tabs[0]:
         options=indicadory,
         index=0  # Define o ano inicial selecionado
     )
+
+    alunos_2020 = df_melted[df_melted['Ano'] == 2020]
+    alunos_2021 = df_melted[df_melted['Ano'] == 2021]
+    alunos_2022 = df_melted[df_melted['Ano'] == 2022]
+    alunos_2023 = df_melted[df_melted['Ano'] == 2023]
+
     with coluna1:
-        st.metric(label="Alunos 2021", value=df_2020.shape[0], delta=0, delta_color="inverse")
+        st.metric(label="Alunos 2021", value=alunos_2020.shape[0], delta=0, delta_color="inverse")
     with coluna2:
-        st.metric(label="Alunos 2022", value=df_2021.shape[0], delta=df_2021.shape[0]/df_2020.shape[0], delta_color="inverse")
+        st.metric(label="Alunos 2022", value=alunos_2021.shape[0], delta=alunos_2021.shape[0]/alunos_2020.shape[0], delta_color="inverse")
     with coluna3:
-        st.metric(label="Alunos 2023", value=df_2022.shape[0], delta=df_2022.shape[0]/df_2021.shape[0], delta_color="inverse")
+        st.metric(label="Alunos 2023", value=alunos_2022.shape[0], delta=alunos_2022.shape[0]/alunos_2021.shape[0], delta_color="inverse")
     with coluna4:
-        st.metric(label="Indicador 4", value=4, delta=-0.5, delta_color="inverse")
+        st.metric(label="Alunos 2024", value=alunos_2023.shape[0], delta=alunos_2023.shape[0]/alunos_2022.shape[0], delta_color="inverse")
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
     st.title("O que fazemos?") 
