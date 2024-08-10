@@ -75,7 +75,7 @@ def scatter_plot(df, varx, vary, legend):
     fig.update_yaxes(range=[min(df_final[var_y]), max(df_final[var_y])], title=var_y)
     fig.update_layout(title="Dispersão de " + var_y + " vs " + var_x, xaxis_title=var_x, yaxis_title=var_y)
     fig.update_layout(
-        width=1000,  # Largura em pixels
+        width=800,  # Largura em pixels
         height=300)
 
     return fig

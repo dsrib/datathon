@@ -71,7 +71,7 @@ with tabs[0]:
         fig, df_g = visualizations.plot_students_per_year(filtered_df)
         st.plotly_chart(fig)
 
-    with coluna4:
+    with coluna2:
         st.write("Indicadores")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
         fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO")
@@ -145,7 +145,7 @@ with tabs[1]:
     # URL do relatório do Power BI
     power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
     # Incorporando o relatório do Power BI usando um iframe
-    st.components.v1.iframe(power_bi_report_url, width=1000, height=600, scrolling=True)
+    st.components.v1.iframe(power_bi_report_url, width=800, height=600, scrolling=True)
 
 
 with tabs[2]:
