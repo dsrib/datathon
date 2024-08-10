@@ -87,7 +87,7 @@ with tabs[0]:
             """,
             unsafe_allow_html=True,
         )
-
+        st.plotly_chart(fig2, use_container_width=True)
        
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
