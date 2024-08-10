@@ -38,7 +38,7 @@ st.title('PASSOS MÁGICOS')
 tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos', 'Indicadores de Sucesso'])
 
 with tabs[0]:
-    coluna1, coluna2 = st.columns([1, 4])
+    coluna1, coluna2, coluna3, coluna4 = st.columns([1, 1, 1, 1])
      # Sidebar com filtros (visível apenas na aba "Visão Geral")
     st.sidebar.header("Filtros de Ano")
     min_year, max_year = st.sidebar.slider(
@@ -63,7 +63,14 @@ with tabs[0]:
         options=indicadory,
         index=0  # Define o ano inicial selecionado
     )
-    
+    with coluna1:
+        st.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
+    with coluna2:
+        st.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
+    with coluna3:
+        st.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
+    with coluna4:
+        st.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
     st.title("O que fazemos?") 
