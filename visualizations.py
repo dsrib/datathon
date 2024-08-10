@@ -77,13 +77,14 @@ def scatter_plot(df, varx, vary, legend, width, height):
     fig.update_layout(
         width=width,  # Largura em pixels
         height=height
-        showgrid=True,
+        )
+    
+    fig.update_yaxes(showgrid=True,
         gridcolor='LightGray',  # Cor das gridlines
         gridwidth=0.5,          # Largura das gridlines
         showline=True,
-        linewidth=0.5,         # Largura da linha dos eixos
-        )
-
+        linewidth=0.5,
+    )
     return fig
 #def plot_students_per_year(filtered_df):
 
