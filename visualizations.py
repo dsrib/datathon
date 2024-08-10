@@ -2,6 +2,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
+import pandas as pd
 # Histograma de alunos por ano
 def plot_students_per_year(filtered_df):
     df_g = filtered_df[filtered_df['indicador'].str.contains('INDE')]
@@ -44,7 +45,7 @@ def plot_students_per_year(filtered_df):
 
 
 def scatter_plot(df, varx, vary, legend):
-    import numpy as np
+    
     var_x = varx
     var_y = vary
     legenda = legend
