@@ -1,6 +1,7 @@
 import streamlit as st
 import plotly.graph_objects as go
-
+import plotly.express as px
+import numpy as np
 # Histograma de alunos por ano
 def plot_students_per_year(filtered_df):
     df_g = filtered_df[filtered_df['indicador'].str.contains('INDE')]
@@ -21,7 +22,7 @@ def plot_students_per_year(filtered_df):
     # Atualizar o layout para incluir uma borda
     fig.update_layout(
         width=250,  # Largura em pixels
-        height=220,  # Altura em pixels
+        height=230,  # Altura em pixels
         #margin=dict(l=40, r=40, t=40, b=40),  # Margens para simular a borda
         #paper_bgcolor='white',  # Cor de fundo do papel
         #plot_bgcolor='white',  # Cor de fundo do gráfico
@@ -41,4 +42,38 @@ def plot_students_per_year(filtered_df):
     )
     return fig, df_g
 
+
+def scatter_plot(df, varx, vary, legend):
+    var_x = varx
+    var_y = vary
+    legenda = legend
+    
+    #legenda
+    df_melted=df
+    df_scatter = df_melted[df_melted['indicador'].str.startswith(legenda)].drop(columns=['indicador', 'indicador2'])
+    df_scatter.rename(columns={"value" : legenda}, inplace=True)
+    
+    #Eixo Y
+    df_y = df_melted[df_melted['indicador'].str.startswith(var_y)].drop(columns=['indicador', 'indicador2'])
+    df_y['value'] = pd.to_numeric(df_y['value'], errors='coerce')
+    df_y.rename(columns={"value" : var_y}, inplace=True)
+    
+    #Eixo X
+    df_x = df_melted[df_melted['indicador'].str.startswith(var_x)].drop(columns=['indicador', 'indicador2'])
+    df_x['value'] = pd.to_numeric(df_x['value'], errors='coerce')
+    df_x.rename(columns={"value" : var_x}, inplace=True)
+    
+    df_final = df_scatter.merge(df_x, on=['NOME', 'Ano'], how='left').merge(df_y, on=['NOME', 'Ano'], how='left')
+
+    fig = px.scatter(df_final, x=var_x, y=var_y, animation_frame="Ano", # Changed 'value' to 'value_x'
+                 color=legenda,
+                 hover_data=["Ano"])
+    # Configure axes and title
+    fig.update_xaxes(range=[min(df_final[var_x]), max(df_final[var_x])], title=var_x)
+    fig.update_yaxes(range=[min(df_final[var_y]), max(df_final[var_y])], title=var_y)
+    fig.update_layout(title="Dispersão de " + var_y + " vs " + var_x, xaxis_title=var_x, yaxis_title=var_y)
+
+
+    return fig
 #def plot_students_per_year(filtered_df):
+
