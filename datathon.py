@@ -79,15 +79,16 @@ with tabs[0]:
         # Criando um container para o gráfico com largura ajustável
         # Criando um container para o gráfico com largura ajustável
         # Usando st.markdown para aplicar CSS diretamente no conteúdo
+        # Usando st.markdown para aplicar CSS diretamente no conteúdo
         st.markdown(
             f"""
-            <div style="width:2000px; overflow-x:auto;">
+            <div style="width:1200px; overflow-x:auto;">
                 {fig2.to_html(full_html=False, include_plotlyjs='cdn')}
             </div>
             """,
             unsafe_allow_html=True,
         )
-        st.plotly_chart(fig2, use_container_width=True)
+        
        
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
