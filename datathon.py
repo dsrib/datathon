@@ -77,6 +77,8 @@ with tabs[0]:
         fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO")
         # Criando um container para o gráfico
     with st.container():
+        fig_width = 1000
+        
         # Aplicando CSS para permitir que o gráfico extrapole a largura da coluna
         st.markdown(
             f"""
