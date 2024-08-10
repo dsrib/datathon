@@ -77,28 +77,18 @@ with tabs[0]:
         fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=1000, height=400)
         # Criando um container para o gráfico
         # Criando um container para o gráfico com largura ajustável
-        with st.container():
-            # Aplicando CSS para permitir que o gráfico extrapole a largura da coluna
-            # Criando um container para o gráfico com largura ajustável
-            st.markdown(
-                f"""
-                <style>
-                    .stContainer > div {{
-                        width: 100%;
-                        max-width: 100%;
-                        overflow-x: auto;
-                    }}
-                    .stPlotlyChart {{
-                        width: 2000px; /* Ajuste da largura do gráfico */
-                        overflow-x: scroll;
-                    }}
-                </style>
-                """,
-                unsafe_allow_html=True,
-            )
+        # Criando um container para o gráfico com largura ajustável
+        st.markdown(
+            f"""
+            <div style="width:2000px; overflow-x:auto;">
+                {fig2.to_html(full_html=False, include_plotlyjs='cdn')}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
             # Exibindo o gráfico no container com estilo aplicado
-            st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
+        st.plotly_chart(fig2)
         
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
