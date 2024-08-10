@@ -63,8 +63,7 @@ with tabs[0]:
         options=indicadory,
         index=0  # Define o ano inicial selecionado
     )
-        
-       
+    
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
     st.title("O que fazemos?") 
@@ -101,11 +100,16 @@ with tabs[0]:
     st.header("Confraternização de Encerramento:")
     st.markdown("Todo ano, é realizado um evento de confraternização para celebrar as conquistas e realizações do ano que passou.")
 
-    
-    
     #st.table(df_g)
 
 with tabs[1]:
+    st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
+    st.markdown("Este relatório tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos.")
+
+    # URL do relatório do Power BI
+    power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
+    # Incorporando o relatório do Power BI usando um iframe
+    st.components.v1.iframe(power_bi_report_url, width=1000, height=600, scrolling=True)
     coluna1, coluna2 = st.columns([1, 4])
     with coluna1:
         st.write("Histograma")
@@ -116,18 +120,9 @@ with tabs[1]:
     with coluna2:
         st.write("Indicadores")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-        fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=2000, height=400)
+        fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=1200, height=400)
          # Exibindo o gráfico com largura ajustável
         st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
-
-    st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
-    st.markdown("Este relatório tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos.")
-
-    # URL do relatório do Power BI
-    power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
-    # Incorporando o relatório do Power BI usando um iframe
-    st.components.v1.iframe(power_bi_report_url, width=1000, height=600, scrolling=True)
-
 
 with tabs[2]:
     st.title("Indicadores de Impacto no ano de 2023:")
