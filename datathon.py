@@ -74,9 +74,9 @@ with tabs[0]:
     with coluna2:
         st.write("Indicadores")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-        fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=1000, height=700)
+        fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=1000, height=400)
         # Exibindo o gráfico no container com estilo aplicado
-        st.plotly_chart(fig2, use_container_width=True, config={'responsive': True})
+        st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
         
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
