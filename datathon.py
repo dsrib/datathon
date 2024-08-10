@@ -83,7 +83,7 @@ with tabs[0]:
                 <style>
                     .stPlotlyChart {{
                         width: 100%;
-                        max-width: 1000px; /* Ajuste este valor para controlar a largura máxima do gráfico */
+                        max-width: 4000px; /* Ajuste este valor para controlar a largura máxima do gráfico */
                         overflow-x: auto;
                     }}
                 </style>
