@@ -74,7 +74,7 @@ with tabs[0]:
     with coluna2:
         st.write("Indicadores")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-        fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=1000, height=400)
+        fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=4000, height=400)
         # Criando um container para o gráfico
         with st.container():
             # Aplicando CSS para permitir que o gráfico extrapole a largura da coluna
