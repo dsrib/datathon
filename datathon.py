@@ -38,7 +38,7 @@ st.title('PASSOS MÁGICOS')
 tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos', 'Indicadores de Sucesso'])
 
 with tabs[0]:
-    coluna1, coluna2, coluna3, coluna4, coluna5 = st.columns(5)
+    coluna1, coluna2 = st.columns([1, 4])
      # Sidebar com filtros (visível apenas na aba "Visão Geral")
     st.sidebar.header("Filtros de Ano")
     min_year, max_year = st.sidebar.slider(
