@@ -74,7 +74,7 @@ with tabs[0]:
     with coluna2:
         st.write("Indicadores")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-        fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=4000, height=400)
+        fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=1000, height=400)
         # Criando um container para o gráfico
         # Criando um container para o gráfico com largura ajustável
         with st.container():
@@ -89,7 +89,7 @@ with tabs[0]:
                     }}
                     .stPlotlyChart {{
                         min-width: 1000px; /* Largura mínima */
-                        max-width: 4000px; /* Largura máxima */
+                        max-width: 2000px; /* Largura máxima */
                     }}
                 </style>
                 """,
