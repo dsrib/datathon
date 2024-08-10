@@ -75,8 +75,27 @@ with tabs[0]:
         st.write("Indicadores")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
         fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=2000, height=400)
-        # Exibindo o gráfico com largura ajustável
-        st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
+        # Criando um container para o gráfico com largura ajustável
+        st.markdown(
+            """
+            <style>
+            .full-width-container {
+                width: 100%;
+                overflow-x: auto;
+            }
+            .full-width-container > div {
+                width: 1200px;  /* Ajuste este valor para a largura desejada */
+            }
+            </style>
+            <div class="full-width-container">
+                <div>
+                    {fig_html}
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+            components={"fig_html": fig2.to_html(full_html=False, include_plotlyjs='cdn')}
+        )
         
        
     st.title("O que é a Passos Mágicos?")
