@@ -76,7 +76,13 @@ def scatter_plot(df, varx, vary, legend, width, height):
     fig.update_layout(title="Dispersão de " + var_y + " vs " + var_x, xaxis_title=var_x, yaxis_title=var_y)
     fig.update_layout(
         width=width,  # Largura em pixels
-        height=height)
+        height=height
+        showgrid=True,
+        gridcolor='LightGray',  # Cor das gridlines
+        gridwidth=0.5,          # Largura das gridlines
+        showline=True,
+        linewidth=0.5,         # Largura da linha dos eixos
+        )
 
     return fig
 #def plot_students_per_year(filtered_df):
