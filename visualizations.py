@@ -72,19 +72,14 @@ def scatter_plot(df, varx, vary, legend, width, height):
                  hover_data=["Ano"])
     # Configure axes and title
     fig.update_xaxes(range=[min(df_final[var_x]), max(df_final[var_x]*1.2)], title=var_x)
-    fig.update_yaxes(range=[min(df_final[var_y]), max(df_final[var_y])*1.5], title=var_y)
+    fig.update_yaxes(range=[min(df_final[var_y]), max(df_final[var_y])*1.2], title=var_y,  nticks=10)
     fig.update_layout(title="Dispersão de " + var_y + " vs " + var_x, xaxis_title=var_x, yaxis_title=var_y)
     fig.update_layout(
         width=width,  # Largura em pixels
         height=height
         )
     
-    fig.update_yaxes(showgrid=True,
-        gridcolor='LightGray',  # Cor das gridlines
-        gridwidth=0.5,          # Largura das gridlines
-        showline=True,
-        linewidth=0.5,
-    )
+
     return fig
 #def plot_students_per_year(filtered_df):
 
