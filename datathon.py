@@ -95,7 +95,7 @@ with tabs[0]:
             """,
             unsafe_allow_html=True,
             components={"fig_html": fig2.to_html(full_html=False, include_plotlyjs='cdn')}
-        )
+    )
         
        
     st.title("O que é a Passos Mágicos?")
