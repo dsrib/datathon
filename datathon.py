@@ -145,7 +145,7 @@ with tabs[1]:
     # URL do relatório do Power BI
     power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
     # Incorporando o relatório do Power BI usando um iframe
-    st.components.v1.iframe(power_bi_report_url, width=800, height=600, scrolling=True)
+    st.components.v1.iframe(power_bi_report_url, width=600, height=600, scrolling=True)
 
 
 with tabs[2]:
