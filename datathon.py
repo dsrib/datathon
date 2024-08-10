@@ -76,22 +76,27 @@ with tabs[0]:
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
         fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=4000, height=400)
         # Criando um container para o gráfico
+        # Criando um container para o gráfico com largura ajustável
         with st.container():
             # Aplicando CSS para permitir que o gráfico extrapole a largura da coluna
             st.markdown(
                 f"""
                 <style>
-                    .stPlotlyChart {{
+                    .stContainer > div {{
                         width: 100%;
-                        max-width: 4000px; /* Ajuste este valor para controlar a largura máxima do gráfico */
+                        max-width: 100%;
                         overflow-x: auto;
+                    }}
+                    .stPlotlyChart {{
+                        min-width: 1000px; /* Largura mínima */
+                        max-width: 4000px; /* Largura máxima */
                     }}
                 </style>
                 """,
                 unsafe_allow_html=True,
             )
-        # Exibindo o gráfico no container com estilo aplicado
-        st.plotly_chart(fig2, use_container_width=True, config={'responsive': True})
+            # Exibindo o gráfico com largura ajustável
+            st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
         
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
