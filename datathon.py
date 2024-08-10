@@ -83,7 +83,7 @@ with tabs[0]:
     with coluna4:
         st.metric(label="Alunos 2023", value=alunos_2023, delta=delta_2023, delta_color="inverse")
     
-    st.table(df_g)
+    #st.table(df_g)
     
     st.title("O que é a Passos Mágicos?")
     st.markdown(descricao)
