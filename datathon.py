@@ -64,11 +64,11 @@ with tabs[0]:
         index=0  # Define o ano inicial selecionado
     )
     with coluna1:
-        st.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
+        st.metric(label="Alunos 2021", value=df_2020.value_counts(), delta=-0.5, delta_color="inverse")
     with coluna2:
-        st.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
+        st.metric(label="Alunos 2022", value=df_2021.value_counts(), delta=-0.5, delta_color="inverse")
     with coluna3:
-        st.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
+        st.metric(label="Alunos 2023", value=df_2022.value_counts(), delta=-0.5, delta_color="inverse")
     with coluna4:
         st.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
     st.title("O que é a Passos Mágicos?")
