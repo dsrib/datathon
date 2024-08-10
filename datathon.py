@@ -79,6 +79,7 @@ with tabs[0]:
         # Criando um container para o gráfico com largura ajustável
         with st.container():
             # Aplicando CSS para permitir que o gráfico extrapole a largura da coluna
+            # Criando um container para o gráfico com largura ajustável
             st.markdown(
                 f"""
                 <style>
@@ -88,14 +89,15 @@ with tabs[0]:
                         overflow-x: auto;
                     }}
                     .stPlotlyChart {{
-                        min-width: 1000px; /* Largura mínima */
-                        max-width: 2000px; /* Largura máxima */
+                        width: 2000px; /* Ajuste da largura do gráfico */
+                        overflow-x: scroll;
                     }}
                 </style>
                 """,
                 unsafe_allow_html=True,
             )
-            # Exibindo o gráfico com largura ajustável
+
+            # Exibindo o gráfico no container com estilo aplicado
             st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
         
     st.title("O que é a Passos Mágicos?")
