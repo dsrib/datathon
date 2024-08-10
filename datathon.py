@@ -57,7 +57,6 @@ with tabs[0]:
         index=0  # Define o ano inicial selecionado
     )
     # Adicionar caixa de seleção única na barra lateral
-
     indicadory = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
     indicador_y = st.sidebar.selectbox(
         'Indicador para eixo x',
@@ -107,7 +106,7 @@ with tabs[0]:
     #st.table(df_g)
 
 with tabs[1]:
-
+    coluna1, coluna2 = st.columns([1, 4])
     with coluna1:
         st.write("Histograma")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
