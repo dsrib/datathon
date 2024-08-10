@@ -44,7 +44,7 @@ def plot_students_per_year(filtered_df):
     return fig, df_g
 
 
-def scatter_plot(df, varx, vary, legend, width_, height_):
+def scatter_plot(df, varx, vary, legend, width, height):
     
     var_x = varx
     var_y = vary
@@ -75,8 +75,8 @@ def scatter_plot(df, varx, vary, legend, width_, height_):
     fig.update_yaxes(range=[min(df_final[var_y]), max(df_final[var_y])], title=var_y)
     fig.update_layout(title="Dispersão de " + var_y + " vs " + var_x, xaxis_title=var_x, yaxis_title=var_y)
     fig.update_layout(
-        width=width_,  # Largura em pixels
-        height=height_)
+        width=width,  # Largura em pixels
+        height=height)
 
     return fig
 #def plot_students_per_year(filtered_df):
