@@ -99,31 +99,39 @@ with tabs[0]:
     st.markdown("Todo ano, é realizado um evento de confraternização para celebrar as conquistas e realizações do ano que passou.")
 
     
-with tabs[1]:
+with tabs[1]:   
+# Configuração do intervalo de anos lado a lado
+    col1, col2 = st.columns([1, 3])
 
-    
-    min_year, max_year = st.select_slider(
-        'Selecione o intervalo de anos',
-        min_value=int(df_melted['Ano'].min()),
-        max_value=int(df_melted['Ano'].max()),
-        value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max()))
-    )
-    
-    # Adicionar caixa de seleção única na barra lateral
-    st.markdown.header("Indicadores")
-    indicadorx = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
-    indicador_x = st.selectbox(
-        'Indicador para eixo y',
-        options=indicadorx,
-        index=0  # Define o ano inicial selecionado
-    )
-    # Adicionar caixa de seleção única na barra lateral
-    indicadory = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
-    indicador_y = st.selectbox(
-        'Indicador para eixo x',
-        options=indicadory,
-        index=0  # Define o ano inicial selecionado
-    )
+    with col1:
+        min_year, max_year = st.select_slider(
+            'Selecione o intervalo de anos',
+            min_value=int(df_melted['Ano'].min()),
+            max_value=int(df_melted['Ano'].max()),
+            value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max()))
+        )
+
+    with col2:
+        st.markdown("### Indicadores")
+
+        # Configuração das select boxes lado a lado
+        col3, col4 = st.columns(2)
+
+        with col3:
+            indicadorx = df_melted['indicador2'].unique()
+            indicador_x = st.selectbox(
+                'Indicador para eixo y',
+                options=indicadorx,
+                index=0
+            )
+
+        with col4:
+            indicadory = df_melted['indicador2'].unique()
+            indicador_y = st.selectbox(
+                'Indicador para eixo x',
+                options=indicadory,
+                index=0
+            )
     
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
     st.markdown("Este relatório tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos.")
