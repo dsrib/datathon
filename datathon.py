@@ -40,30 +40,7 @@ tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos', 'Indicadores de S
 with tabs[0]:
     coluna1, coluna2, coluna3, coluna4 = st.columns([1, 1, 1, 1])
      # Sidebar com filtros (visível apenas na aba "Visão Geral")
-    st.sidebar.header("Filtros de Ano")
-    min_year, max_year = st.sidebar.slider(
-        'Selecione o intervalo de anos',
-        min_value=int(df_melted['Ano'].min()),
-        max_value=int(df_melted['Ano'].max()),
-        value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max()))
-    )
-    
-    # Adicionar caixa de seleção única na barra lateral
-    st.sidebar.header("Indicadores")
-    indicadorx = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
-    indicador_x = st.sidebar.selectbox(
-        'Indicador para eixo y',
-        options=indicadorx,
-        index=0  # Define o ano inicial selecionado
-    )
-    # Adicionar caixa de seleção única na barra lateral
-    indicadory = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
-    indicador_y = st.sidebar.selectbox(
-        'Indicador para eixo x',
-        options=indicadory,
-        index=0  # Define o ano inicial selecionado
-    )
-
+ 
     alunos_2020 = df_melted[df_melted['Ano'] == 2020]['NOME'].nunique()
     alunos_2021 = df_melted[df_melted['Ano'] == 2021]['NOME'].nunique()
     alunos_2022 = df_melted[df_melted['Ano'] == 2022]['NOME'].nunique()
@@ -124,13 +101,34 @@ with tabs[0]:
     
 
 with tabs[1]:
+
+    st.sidebar.header("Filtros de Ano")
+    min_year, max_year = st.sidebar.slider(
+        'Selecione o intervalo de anos',
+        min_value=int(df_melted['Ano'].min()),
+        max_value=int(df_melted['Ano'].max()),
+        value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max()))
+    )
+    
+    # Adicionar caixa de seleção única na barra lateral
+    st.sidebar.header("Indicadores")
+    indicadorx = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
+    indicador_x = st.sidebar.selectbox(
+        'Indicador para eixo y',
+        options=indicadorx,
+        index=0  # Define o ano inicial selecionado
+    )
+    # Adicionar caixa de seleção única na barra lateral
+    indicadory = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
+    indicador_y = st.sidebar.selectbox(
+        'Indicador para eixo x',
+        options=indicadory,
+        index=0  # Define o ano inicial selecionado
+    )
+    
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
     st.markdown("Este relatório tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos.")
 
-    # URL do relatório do Power BI
-    power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
-    # Incorporando o relatório do Power BI usando um iframe
-    st.components.v1.iframe(power_bi_report_url, width=1400, height=600, scrolling=True)
     coluna1, coluna2 = st.columns([1, 4])
     with coluna1:
         st.write("Histograma")
@@ -144,6 +142,12 @@ with tabs[1]:
         fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=1200, height=400)
          # Exibindo o gráfico com largura ajustável
         st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
+
+    # URL do relatório do Power BI
+    power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
+    # Incorporando o relatório do Power BI usando um iframe
+    st.components.v1.iframe(power_bi_report_url, width=1400, height=600, scrolling=True)
+
 
 with tabs[2]:
     st.title("Indicadores de Impacto no ano de 2023:")
