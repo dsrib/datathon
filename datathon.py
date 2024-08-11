@@ -99,11 +99,10 @@ with tabs[0]:
     st.markdown("Todo ano, é realizado um evento de confraternização para celebrar as conquistas e realizações do ano que passou.")
 
     
-
 with tabs[1]:
 
-    st.sidebar.header("Filtros de Ano")
-    min_year, max_year = st.sidebar.slider(
+    
+    min_year, max_year = st.select_slider(
         'Selecione o intervalo de anos',
         min_value=int(df_melted['Ano'].min()),
         max_value=int(df_melted['Ano'].max()),
@@ -111,16 +110,16 @@ with tabs[1]:
     )
     
     # Adicionar caixa de seleção única na barra lateral
-    st.sidebar.header("Indicadores")
+    st.markdown.header("Indicadores")
     indicadorx = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
-    indicador_x = st.sidebar.selectbox(
+    indicador_x = st.selectbox(
         'Indicador para eixo y',
         options=indicadorx,
         index=0  # Define o ano inicial selecionado
     )
     # Adicionar caixa de seleção única na barra lateral
     indicadory = df_melted['indicador2'].unique()  # Supondo que você tem uma coluna 'Ano' no seu DataFrame
-    indicador_y = st.sidebar.selectbox(
+    indicador_y = st.selectbox(
         'Indicador para eixo x',
         options=indicadory,
         index=0  # Define o ano inicial selecionado
@@ -129,24 +128,24 @@ with tabs[1]:
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
     st.markdown("Este relatório tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos.")
 
-    coluna1, coluna2 = st.columns([1, 4])
-    with coluna1:
-        st.write("Histograma")
-        filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-        fig, df_g = visualizations.plot_students_per_year(filtered_df)
-        st.plotly_chart(fig, use_container_width=True)
+    coluna1= st.columns([1])
 
-    with coluna2:
+    with coluna1:
         st.write("Indicadores")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
         fig2 = visualizations.scatter_plot(filtered_df, "INDE", "IAA", "INSTITUICAO", width=1200, height=400)
          # Exibindo o gráfico com largura ajustável
         st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
-
+    """with coluna2:
+        st.write("Histograma")
+        filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
+        fig, df_g = visualizations.plot_students_per_year(filtered_df)
+        st.plotly_chart(fig, use_container_width=True)
+    """
     # URL do relatório do Power BI
     power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
     # Incorporando o relatório do Power BI usando um iframe
-    st.components.v1.iframe(power_bi_report_url, width=1400, height=600, scrolling=True)
+    st.components.v1.iframe(power_bi_report_url, width=1600, height=600, scrolling=True)
 
 
 with tabs[2]:
