@@ -146,7 +146,7 @@ with tabs[1]:
     col1 = st.columns(1)
 
     with col1[0]:
-        st.write("Indicadores")
+        #st.write("Indicadores")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
         fig2 = visualizations.scatter_plot(filtered_df, indicador_x, indicador_y, legenda, width=1400, height=500)
         st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
