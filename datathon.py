@@ -98,7 +98,11 @@ with tabs[0]:
     st.header("Confraternização de Encerramento:")
     st.markdown("Todo ano, é realizado um evento de confraternização para celebrar as conquistas e realizações do ano que passou.")
 
-with tabs[1]:    
+with tabs[1]:  
+
+    indicador_x = "IEG"
+    indicador_y = "IDA"
+    legenda = "INSTITUICAO"  
 # Configuração do intervalo de anos lado a lado
     col1, col2 = st.columns([1, 3])
 
@@ -144,7 +148,7 @@ with tabs[1]:
     with col1[0]:
         st.write("Indicadores")
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-        fig2 = visualizations.scatter_plot(filtered_df, indicador_x, indicador_y, "INSTITUICAO", width=1200, height=400)
+        fig2 = visualizations.scatter_plot(filtered_df, indicador_x, indicador_y, legenda, width=1200, height=400)
         st.plotly_chart(fig2, use_container_width=True, config={'responsive': True})
 
     # URL do relatório do Power BI
