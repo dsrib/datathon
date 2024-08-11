@@ -118,7 +118,7 @@ with tabs[1]:
         )
 
     with col2:
-        st.markdown("### Indicadores")
+        #st.markdown("### Indicadores")
 
         # Configuração das select boxes lado a lado
         col3, col4, col5, col6 = st.columns(4)
