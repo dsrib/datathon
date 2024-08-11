@@ -103,12 +103,15 @@ with tabs[1]:
 # Configuração do intervalo de anos lado a lado
     col1, col2 = st.columns([1, 3])
 
+    # Garantindo que os valores mínimos e máximos sejam inteiros
+    min_ano = int(df_melted['Ano'].min())
+    max_ano = int(df_melted['Ano'].max())
+
     with col1:
         min_year, max_year = st.select_slider(
             'Selecione o intervalo de anos',
-            min_value=int(df_melted['Ano'].min()),
-            max_value=int(df_melted['Ano'].max()),
-            value=(int(df_melted['Ano'].min()), int(df_melted['Ano'].max()))
+            options=list(range(min_ano, max_ano + 1)),  # Garante uma lista de anos inteiros
+            value=(min_ano, max_ano)  # Valor inicial como o intervalo completo
         )
 
     with col2:
