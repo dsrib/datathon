@@ -41,26 +41,26 @@ with tabs[0]:
     coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7, coluna8 = st.columns([1, 1, 1, 1, 1, 1, 1, 1])
      # Sidebar com filtros (visível apenas na aba "Visão Geral")
  
-    alunos_2020 = df_melted[df_melted['Ano'] == 2020]['NOME'].nunique()
-    alunos_2021 = df_melted[df_melted['Ano'] == 2021]['NOME'].nunique()
-    alunos_2022 = df_melted[df_melted['Ano'] == 2022]['NOME'].nunique()
-    alunos_2023 = df_melted[df_melted['Ano'] == 2023]['NOME'].nunique()
+    alunos_2020 = 727
+    alunos_2021 = 684
+    alunos_2022 = 862
+    qtd_alunos = df_melted['NOME'].nunique()
 
     # Calcular a variação percentual entre anos
+    delta_2020 = alunos_2020 - alunos_2020
     delta_2021 = alunos_2021 - alunos_2020
     delta_2022 = alunos_2022 - alunos_2021
-    delta_2023 = alunos_2023 - alunos_2022
 
     with coluna1:
         st.metric(label="Impacto Social (nº pessoas)", value=4400, delta=0)
     with coluna2:
-        st.metric(label="Qtd Alunos", value=alunos_2021, delta=0)
+        st.metric(label="Qtd Alunos", value=qtd_alunos, delta=0)
     with coluna3:
-        st.metric(label="Alunos 2021", value=alunos_2021, delta=delta_2021)
+        st.metric(label="Alunos 2020", value=alunos_2020, delta=delta_2020)
     with coluna4:
-        st.metric(label="Alunos 2022", value=alunos_2022, delta=delta_2022)
+        st.metric(label="Alunos 2021", value=alunos_2021, delta=delta_2021)
     with coluna5:
-        st.metric(label="Alunos 2023", value=alunos_2023, delta=delta_2023)
+        st.metric(label="Alunos 2022", value=alunos_2022, delta=delta_2022)
     with coluna6:
         st.metric(label="Bolsistas", value=98, delta=0)
     with coluna7:
