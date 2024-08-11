@@ -121,7 +121,7 @@ with tabs[1]:
         st.markdown("### Indicadores")
 
         # Configuração das select boxes lado a lado
-        col3, col4 = st.columns(2)
+        col3, col4, col5, col6 = st.columns(4)
 
         with col3:
             indicadorx = df_melted['indicador2'].unique()
