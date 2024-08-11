@@ -38,7 +38,7 @@ st.title('PASSOS MÁGICOS')
 tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos', 'Indicadores de Sucesso'])
 
 with tabs[0]:
-    coluna1, coluna2, coluna3, coluna4 = st.columns([1, 1, 1, 1])
+    coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7, coluna8 = st.columns([1, 1, 1, 1, 1, 1, 1, 1])
      # Sidebar com filtros (visível apenas na aba "Visão Geral")
  
     alunos_2020 = df_melted[df_melted['Ano'] == 2020]['NOME'].nunique()
@@ -52,14 +52,21 @@ with tabs[0]:
     delta_2023 = alunos_2023 - alunos_2022
 
     with coluna1:
-        st.metric(label="Alunos 2020", value=alunos_2020, delta=0, delta_color="inverse")
+        st.metric(label="Impacto Social (nº pessoas)", value=4400, delta=0, delta_color="default")
     with coluna2:
-        st.metric(label="Alunos 2021", value=alunos_2021, delta=delta_2021, delta_color="inverse")
+        st.metric(label="Qtd Alunos", value=alunos_2021, delta=0, delta_color="default")
     with coluna3:
-        st.metric(label="Alunos 2022", value=alunos_2022, delta=delta_2022, delta_color="inverse")
+        st.metric(label="Alunos 2021", value=alunos_2021, delta=delta_2021, delta_color="default")
     with coluna4:
-        st.metric(label="Alunos 2023", value=alunos_2023, delta=delta_2023, delta_color="inverse")
-    
+        st.metric(label="Alunos 2022", value=alunos_2022, delta=delta_2022, delta_color="default")
+    with coluna5:
+        st.metric(label="Alunos 2023", value=alunos_2023, delta=delta_2023, delta_color="default")
+    with coluna6:
+        st.metric(label="Bolsistas", value=98, delta=0, delta_color="default")
+    with coluna7:
+        st.metric(label="Universitários", value=103, delta=0, delta_color="default")
+    with coluna8:
+        st.metric(label="Graduados", value=41, delta=0, delta_color="default")
     #st.table(df_g)
     
     st.title("O que é a Passos Mágicos?")
