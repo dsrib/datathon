@@ -128,7 +128,7 @@ with tabs[1]:
             indicador_x = st.selectbox(
                 'Indicador para eixo y',
                 options=indicadorx,
-                index=0
+                index=list(indicadorx).index("INDE") if "INDE" in indicadorx else 0
             )
 
         with col4:
@@ -136,7 +136,7 @@ with tabs[1]:
             indicador_y = st.selectbox(
                 'Indicador para eixo x',
                 options=indicadory,
-                index=0
+                index=list(indicadory).index("IDA") if "IDA" in indicadory else 0
             )
 
     st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
@@ -150,10 +150,8 @@ with tabs[1]:
         filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
         fig2 = visualizations.scatter_plot(filtered_df, indicador_x, indicador_y, legenda, width=1200, height=400)
         st.plotly_chart(fig2, use_container_width=True, config={'responsive': True})
-
     # URL do relatório do Power BI
     power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
-
     # Incorporando o relatório do Power BI usando um iframe
     st.components.v1.iframe(power_bi_report_url, width=1600, height=600, scrolling=True)
 
