@@ -52,21 +52,21 @@ with tabs[0]:
     delta_2023 = alunos_2023 - alunos_2022
 
     with coluna1:
-        st.metric(label="Impacto Social (nº pessoas)", value=4400, delta=0, delta_color="default")
+        st.metric(label="Impacto Social (nº pessoas)", value=4400, delta=0)
     with coluna2:
-        st.metric(label="Qtd Alunos", value=alunos_2021, delta=0, delta_color="default")
+        st.metric(label="Qtd Alunos", value=alunos_2021, delta=0)
     with coluna3:
-        st.metric(label="Alunos 2021", value=alunos_2021, delta=delta_2021, delta_color="default")
+        st.metric(label="Alunos 2021", value=alunos_2021, delta=delta_2021)
     with coluna4:
-        st.metric(label="Alunos 2022", value=alunos_2022, delta=delta_2022, delta_color="default")
+        st.metric(label="Alunos 2022", value=alunos_2022, delta=delta_2022)
     with coluna5:
-        st.metric(label="Alunos 2023", value=alunos_2023, delta=delta_2023, delta_color="default")
+        st.metric(label="Alunos 2023", value=alunos_2023, delta=delta_2023)
     with coluna6:
-        st.metric(label="Bolsistas", value=98, delta=0, delta_color="default")
+        st.metric(label="Bolsistas", value=98, delta=0)
     with coluna7:
-        st.metric(label="Universitários", value=103, delta=0, delta_color="default")
+        st.metric(label="Universitários", value=103, delta=0)
     with coluna8:
-        st.metric(label="Graduados", value=41, delta=0, delta_color="default")
+        st.metric(label="Graduados", value=41, delta=0)
     #st.table(df_g)
     
     st.title("O que é a Passos Mágicos?")
