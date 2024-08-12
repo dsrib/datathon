@@ -120,7 +120,7 @@ with tabs[1]:
     with col1:
         min_year, max_year = st.select_slider(
             'Selecione o intervalo de anos',
-            options=list(range(min_ano, max_ano + 1)),  # Garante uma lista de anos inteiros
+            options=list(range(min_ano, max_ano)),  # Garante uma lista de anos inteiros
             value=(min_ano, max_ano)  # Valor inicial como o intervalo completo
         )
 
@@ -173,7 +173,7 @@ data = {
 df1 = pd.DataFrame(data)
 
 # Criando o gráfico de linha 1
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(5, 4))
 ax.plot(df1['Ano'], df1['Alunos'], marker='o', label='Alunos')
 ax.plot(df1['Ano'], df1['Bolsistas'], marker='o', label='Bolsistas')
 ax.plot(df1['Ano'], df1['Universitários'], marker='o', label='Universitários')
@@ -197,7 +197,7 @@ data_2 = {
 df2 = pd.DataFrame(data_2)
 
 # Criando o gráfico de linha 2
-fig2, ax2 = plt.subplots(figsize=(10, 6))
+fig2, ax2 = plt.subplots(figsize=(5, 4))
 ax2.plot(df2['Ano'], df2['%Populacao'], marker='o', label='% População')
 ax2.plot(df2['Ano'], df2['Populacao'], marker='o', label='População')
 ax2.set_title('Quantidade Alunos ONG X População Embu-Guaçu')
