@@ -131,7 +131,8 @@ with tabs[1]:
         col3, col4, col5, col6 = st.columns(4)
 
         with col3:
-            indicadorx = df_melted['indicador2'].unique()
+            df_melted_numeric = df_melted[df_melted['value'].apply(lambda x: str(x).isnumeric())]
+            indicadorx = df_melted_numeric['indicador2'].unique()
             indicador_x = st.selectbox(
                 'Indicador para eixo y',
                 options=indicadorx,
@@ -139,7 +140,8 @@ with tabs[1]:
             )
 
         with col4:
-            indicadory = df_melted['indicador2'].unique()
+            df_melted_numeric = df_melted[df_melted['value'].apply(lambda x: str(x).isnumeric())]
+            indicadory = df_melted_numeric['indicador2'].unique()
             indicador_y = st.selectbox(
                 'Indicador para eixo x',
                 options=indicadory,
@@ -161,23 +163,7 @@ with tabs[1]:
         power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
         # Incorporando o relatório do Power BI usando um iframe
         st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
-
-with tabs[2]:
-    st.title("Indicadores de Impacto no ano de 2023:")
-    col1,col2,col3,col4,col5 =st.columns(5)
-    with col1:
-       st.markdown("'4400'Pessoas impactadas (Considerando a média de 4 familiares por aluno)")
-    with col2:
-      st.markdown("'1100'Alunos no programa de Aceleração do Conhecimento") 
-    with col3:
-      st.markdown("'98'Bolsistas em instituições de ensino particular")  
-    with col4:
-      st.markdown("'103'Universitários em instituições de ensino superior")
-    with col5:
-      st.markdown("'41'Alunos formados em instituições de ensino superior")  
-
-    
-    # Dados para gráfico de linha 1
+        # Dados para gráfico de linha 1
 data = {
     'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
     'Alunos': [70, 300, 550, 812, 841, 824, 970, 1100],
@@ -223,3 +209,5 @@ ax2.grid(True)
 # Exibindo o gráfico com o Streamlit
 st.title('Quantidade Alunos ONG X População Embu-Guaçu')
 st.pyplot(fig2)
+
+    
