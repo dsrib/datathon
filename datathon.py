@@ -39,7 +39,7 @@ st.title('PASSOS MÁGICOS')
 tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos', 'Indicadores de Sucesso'])
 
 with tabs[0]:
-    coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7, coluna8 = st.columns([1, 1, 1, 1, 1, 1, 1, 1])
+    coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7, coluna8, coluna9 = st.columns([1, 1, 1, 1, 1, 1, 1, 1, 1])
      # Sidebar com filtros (visível apenas na aba "Visão Geral")
  
     alunos_2020 = 727
@@ -68,6 +68,8 @@ with tabs[0]:
         st.metric(label="Universitários 2023", value=103, delta=0)
     with coluna8:
         st.metric(label="Graduados 2023", value=41, delta=0)
+    with coluna9:
+        st.plotly_chart(visualizations.line_chart_column())   
     #st.table(df_g)
     
     st.title("O que é a Passos Mágicos?")

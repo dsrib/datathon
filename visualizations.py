@@ -83,3 +83,30 @@ def scatter_plot(df, varx, vary, legend, width, height):
     return fig
 #def plot_students_per_year(filtered_df):
 
+
+def line_chart_column()
+    data_2 = {
+        'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+        'Alunos': [70, 300, 550, 812, 841, 824, 970],
+        'Bolsistas': [26, 35, 80, 106, 112, 133, 112],
+        'Universitários': [0, 0, 1, 2, 26, 51, 71],
+        'Populacao': [67788, 68270, 68750, 69385, 70083, 70402, 66970],
+        '%Populacao': [0.10, 0.44, 0.80, 1.17, 1.20, 1.17, 1.45]
+    }
+    df2 = pd.DataFrame(data_2)
+
+    # Criando uma linha com dois eixos Y
+    fig2 = st.columns([
+        st.column_config.LineChartColumn(
+            title='Quantidade Alunos ONG X População Embu-Guaçu',
+            data=df2,
+            x='Ano',
+            y=['%Populacao', 'Populacao'],
+            height=500,
+            width=500,
+            y2='Populacao',  # Definindo o segundo eixo Y
+        )
+    ])
+
+    return fig2
+
