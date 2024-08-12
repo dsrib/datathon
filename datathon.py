@@ -164,50 +164,50 @@ with tabs[1]:
         # Incorporando o relatório do Power BI usando um iframe
         st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
         # Dados para gráfico de linha 1
-data = {
-    'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
-    'Alunos': [70, 300, 550, 812, 841, 824, 970, 1100],
-    'Bolsistas': [26, 35, 80, 106, 112, 133, 112, 100],
-    'Universitários': [0, 0, 1, 2, 26, 51, 71, 94]
-}
-df1 = pd.DataFrame(data)
+    data = {
+        'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+        'Alunos': [70, 300, 550, 812, 841, 824, 970, 1100],
+        'Bolsistas': [26, 35, 80, 106, 112, 133, 112, 100],
+        'Universitários': [0, 0, 1, 2, 26, 51, 71, 94]
+    }
+    df1 = pd.DataFrame(data)
 
-# Criando o gráfico de linha 1
-fig, ax = plt.subplots(figsize=(5, 4))
-ax.plot(df1['Ano'], df1['Alunos'], marker='o', label='Alunos')
-ax.plot(df1['Ano'], df1['Bolsistas'], marker='o', label='Bolsistas')
-ax.plot(df1['Ano'], df1['Universitários'], marker='o', label='Universitários')
-ax.set_title('Alunos X Bolsistas X Universitários')
-ax.set_xlabel('Ano')
-ax.set_ylabel('Quantidade')
-ax.legend()
-ax.grid(True)
+    # Criando o gráfico de linha 1
+    fig, ax = plt.subplots(figsize=(5, 4))
+    ax.plot(df1['Ano'], df1['Alunos'], marker='o', label='Alunos')
+    ax.plot(df1['Ano'], df1['Bolsistas'], marker='o', label='Bolsistas')
+    ax.plot(df1['Ano'], df1['Universitários'], marker='o', label='Universitários')
+    ax.set_title('Alunos X Bolsistas X Universitários')
+    ax.set_xlabel('Ano')
+    ax.set_ylabel('Quantidade')
+    ax.legend()
+    ax.grid(True)
 
-# Exibindo o gráfico com o Streamlit
-st.title('Alunos X Bolsistas X Universitários')
-st.pyplot(fig)
+    # Exibindo o gráfico com o Streamlit
+    st.title('Alunos X Bolsistas X Universitários')
+    st.pyplot(fig)
 
-# Dados para gráfico de linha 2
-data_2 = {
-    'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
-    'Alunos': [70, 300, 550, 812, 841, 824, 970],
-    'Populacao': [67788, 68270, 68750, 69385, 70083, 70402, 66970],
-    '%Populacao': [0.10, 0.44, 0.80, 1.17, 1.20, 1.17, 1.45]
-}
-df2 = pd.DataFrame(data_2)
+    # Dados para gráfico de linha 2
+    data_2 = {
+        'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+        'Alunos': [70, 300, 550, 812, 841, 824, 970],
+        'Populacao': [67788, 68270, 68750, 69385, 70083, 70402, 66970],
+        '%Populacao': [0.10, 0.44, 0.80, 1.17, 1.20, 1.17, 1.45]
+    }
+    df2 = pd.DataFrame(data_2)
 
-# Criando o gráfico de linha 2
-fig2, ax2 = plt.subplots(figsize=(5, 4))
-ax2.plot(df2['Ano'], df2['%Populacao'], marker='o', label='% População')
-ax2.plot(df2['Ano'], df2['Populacao'], marker='o', label='População')
-ax2.set_title('Quantidade Alunos ONG X População Embu-Guaçu')
-ax2.set_xlabel('Ano')
-ax2.set_ylabel('Quantidade')
-ax2.legend()
-ax2.grid(True)
+    # Criando o gráfico de linha 2
+    fig2, ax2 = plt.subplots(figsize=(5, 4))
+    ax2.plot(df2['Ano'], df2['%Populacao'], marker='o', label='% População')
+    ax2.plot(df2['Ano'], df2['Populacao'], marker='o', label='População')
+    ax2.set_title('Quantidade Alunos ONG X População Embu-Guaçu')
+    ax2.set_xlabel('Ano')
+    ax2.set_ylabel('Quantidade')
+    ax2.legend()
+    ax2.grid(True)
 
-# Exibindo o gráfico com o Streamlit
-st.title('Quantidade Alunos ONG X População Embu-Guaçu')
-st.pyplot(fig2)
+    # Exibindo o gráfico com o Streamlit
+    st.title('Quantidade Alunos ONG X População Embu-Guaçu')
+    st.pyplot(fig2)
 
     
