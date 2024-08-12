@@ -12,6 +12,7 @@ from statsmodels.tsa.seasonal import seasonal_decompose
 import openpyxl
 import functions
 import visualizations
+from plotly.subplots import make_subplots
 # Defina a chave da API do OpenAI diretamente ou use st.secrets
 #OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", "sua-chave-de-api-aqui")
 
@@ -207,10 +208,21 @@ with tabs[1]:
             df2 = pd.DataFrame(data_2)
 
             # Criando o gráfico de linha 2
-            fig2 = go.Figure()
-            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['%Populacao'], mode='lines+markers', name='%Populacao'))
-            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['Populacao'], mode='lines+markers', name='Populacao'))
-            
+            # Criando uma figura com dois eixos Y
+            fig2 = make_subplots(specs=[[{"secondary_y": True}]])
+
+            # Adicionando a primeira linha com o primeiro eixo Y (%Populacao)
+            fig2.add_trace(
+                go.Scatter(x=df2['Ano'], y=df2['%Populacao'], mode='lines+markers', name='%Populacao'),
+                secondary_y=False
+            )
+
+            # Adicionando a segunda linha com o segundo eixo Y (Populacao)
+            fig2.add_trace(
+                go.Scatter(x=df2['Ano'], y=df2['Populacao'], mode='lines+markers', name='Populacao'),
+                secondary_y=True
+            )
+                    
 
             fig2.update_layout(
                 title='Quantidade Alunos ONG X População Embu-Guaçu',
@@ -219,7 +231,8 @@ with tabs[1]:
                 height=500,
                 width=500
             )
-
+            fig2.update_yaxes(title_text='%Populacao', secondary_y=False)
+            fig2.update_yaxes(title_text='Populacao', secondary_y=True)
             # Exibindo o gráfico com o Streamlit
             st.plotly_chart(fig2)
 
