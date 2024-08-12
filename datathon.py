@@ -166,8 +166,9 @@ with tabs[1]:
             st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
             # Dados para gráfico de linha 1
         
-with tabs[1]:  
-        with col3:
+with tabs[1]:
+        col1, col2 = st.columns([1, 1])
+        with col1:
             data = {
                 'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
                 'Alunos': [70, 300, 550, 812, 841, 824, 970, 1100],
@@ -193,7 +194,7 @@ with tabs[1]:
             # Display with Streamlit
             st.plotly_chart(fig)                                    
 
-        with col4:
+        with col2:
             # Dados para gráfico de linha 2
             data_2 = {
                 'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
@@ -207,9 +208,9 @@ with tabs[1]:
 
             # Criando o gráfico de linha 2
             fig2 = go.Figure()
-            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['Alunos'], mode='lines+markers', name='Alunos'))
-            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['Bolsistas'], mode='lines+markers', name='Bolsistas'))
-            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['Universitários'], mode='lines+markers', name='Universitários'))
+            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['%Populacao'], mode='lines+markers', name='Alunos'))
+            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['Populacao'], mode='lines+markers', name='Bolsistas'))
+            
 
             fig2.update_layout(
                 title='Alunos X Bolsistas X Universitários - df2',
