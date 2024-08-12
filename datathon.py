@@ -177,7 +177,7 @@ with tabs[2]:
       st.markdown("'41'Alunos formados em instituições de ensino superior")  
 
     
-    #Dados para gráfico de linha
+    #Dados para gráfico de linha 1
     data = {
           'Ano' : ['2016', '2017', '2018', '2019','2020','2021','2022','2023'],
           'Alunos' : [70, 300, 550, 812, 841, 824, 970, 1100],
@@ -204,4 +204,30 @@ with tabs[2]:
 
     # Para exibir a imagem salva do gráfico
     st.image('grafico_linha_tempo.png')
-    
+  
+#Dados para gráfico de linha 2
+    data_2 = {
+          'Ano' : ['2016', '2017', '2018', '2019','2020','2021','2022'],
+          'Alunos' : [70, 300, 550, 812, 841, 824, 970],
+          'Populacao' : [67788,68270,68750,69385,70083,70402,66970],
+          '%Populacao' : [0.10%,0.44%,0.80%,1.17%,1.20%,1.17%,1.45%]}
+    df_2 = pd.DataFrame(data_2)
+    # Criando o gráfico de linha
+    plt.figure(figsize=(10, 6))
+    plt.plot(df['Ano'], df['%Populacao'], marker='o', label='%Populacao')
+    plt.plot(df['Ano'], df['Populacao'], marker='o', label='Populacao')
+    plt.title('Quantidade Alunos ONG X População Embu-Guaçu')
+    plt.xlabel('Ano')
+    plt.ylabel('Quantidade')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+    # Salvando o gráfico
+    plt.savefig('grafico_linha_tempo.png_2')
+
+    # Exibindo o gráfico com o Streamlit
+    st.title('Quantidade Alunos ONG X População Embu-Guaçu')
+    st.line_chart(df.set_index('Data'))
+
+    # Para exibir a imagem salva do gráfico
+    st.image('grafico_linha_tempo.png_2') 
