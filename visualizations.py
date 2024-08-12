@@ -84,7 +84,7 @@ def scatter_plot(df, varx, vary, legend, width, height):
 #def plot_students_per_year(filtered_df):
 
 
-def line_chart_column()
+def line_chart_column():
     data_2 = {
         'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
         'Alunos': [70, 300, 550, 812, 841, 824, 970],
