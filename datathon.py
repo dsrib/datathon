@@ -35,7 +35,7 @@ df_melted['indicador2'] = df_melted['indicador'].apply(lambda x: str(x[:-5]))
 
 # Visualização no Streamlit
 st.title('PASSOS MÁGICOS')
-tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos'])
+tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos', 'Indicadores de Sucesso'])
 
 with tabs[0]:
     coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7, coluna8 = st.columns([1, 1, 1, 1, 1, 1, 1, 1])
@@ -155,7 +155,7 @@ with tabs[1]:
     col1 = st.columns(1)
 
     with col1[0]:
-        with col3:
+
             #st.write("Indicadores")
             filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
             fig2 = visualizations.scatter_plot(filtered_df, indicador_x, indicador_y, legenda, width=1400, height=500)
@@ -165,6 +165,8 @@ with tabs[1]:
             # Incorporando o relatório do Power BI usando um iframe
             st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
             # Dados para gráfico de linha 1
+        
+with tabs[1]:  
         with col3:
             data = {
                 'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
