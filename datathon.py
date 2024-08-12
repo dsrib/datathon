@@ -164,7 +164,7 @@ with tabs[1]:
         # Incorporando o relatório do Power BI usando um iframe
         st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
         # Dados para gráfico de linha 1
-        with coluna1:
+        with col3:
             data = {
                 'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
                 'Alunos': [70, 300, 550, 812, 841, 824, 970, 1100],
@@ -192,7 +192,7 @@ with tabs[1]:
 
 
     
-        with coluna4:
+        with col4:
             # Dados para gráfico de linha 2
             data_2 = {
                 'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
