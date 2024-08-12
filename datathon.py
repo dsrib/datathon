@@ -185,7 +185,7 @@ with tabs[1]:
 
     # Exibindo o gráfico com o Streamlit
     st.title('Alunos X Bolsistas X Universitários')
-    st.pyplot(fig)
+    st.pyplot(fig, height=500, width=500)
 
     # Dados para gráfico de linha 2
     data_2 = {
