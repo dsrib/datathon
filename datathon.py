@@ -173,15 +173,21 @@ with tabs[1]:
     df1 = pd.DataFrame(data)
 
     # Criando o gráfico de linha 1
-    fig, ax = plt.subplots(figsize=(5, 4))
-    ax.plot(df1['Ano'], df1['Alunos'], marker='o', label='Alunos')
-    ax.plot(df1['Ano'], df1['Bolsistas'], marker='o', label='Bolsistas')
-    ax.plot(df1['Ano'], df1['Universitários'], marker='o', label='Universitários')
-    ax.set_title('Alunos X Bolsistas X Universitários')
-    ax.set_xlabel('Ano')
-    ax.set_ylabel('Quantidade')
-    ax.legend()
-    ax.grid(True)
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Alunos'], mode='lines+markers', name='Alunos'))
+    fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Bolsistas'], mode='lines+markers', name='Bolsistas'))
+    fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Universitários'], mode='lines+markers', name='Universitários'))
+
+    fig.update_layout(
+        title='Alunos X Bolsistas X Universitários',
+        xaxis_title='Ano',
+        yaxis_title='Quantidade',
+        height=500,
+        width=500
+    )
+
+    # Display with Streamlit
+    st.plotly_chart(fig)
 
     # Exibindo o gráfico com o Streamlit
     st.title('Alunos X Bolsistas X Universitários')
