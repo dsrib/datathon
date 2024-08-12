@@ -69,7 +69,8 @@ with tabs[0]:
     with coluna8:
         st.metric(label="Graduados 2023", value=41, delta=0)
     with coluna9:
-        st.plotly_chart(visualizations.line_chart_column())   
+        with st.container():
+            st.plotly_chart(line_chart_column())
     #st.table(df_g)
     
     st.title("O que é a Passos Mágicos?")
