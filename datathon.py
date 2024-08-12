@@ -203,17 +203,21 @@ with tabs[1]:
     df2 = pd.DataFrame(data_2)
 
     # Criando o gráfico de linha 2
-    fig2, ax2 = plt.subplots(figsize=(5, 4))
-    ax2.plot(df2['Ano'], df2['%Populacao'], marker='o', label='% População')
-    ax2.plot(df2['Ano'], df2['Populacao'], marker='o', label='População')
-    ax2.set_title('Quantidade Alunos ONG X População Embu-Guaçu')
-    ax2.set_xlabel('Ano')
-    ax2.set_ylabel('Quantidade')
-    ax2.legend()
-    ax2.grid(True)
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(x=df2['Ano'], y=df2['Alunos'], mode='lines+markers', name='Alunos'))
+    fig.add_trace(go.Scatter(x=df2['Ano'], y=df2['Bolsistas'], mode='lines+markers', name='Bolsistas'))
+    fig.add_trace(go.Scatter(x=df2['Ano'], y=df2['Universitários'], mode='lines+markers', name='Universitários'))
+
+    fig.update_layout(
+        title='Alunos X Bolsistas X Universitários - df2',
+        xaxis_title='Ano',
+        yaxis_title='Quantidade',
+        height=500,
+        width=500
+    )
 
     # Exibindo o gráfico com o Streamlit
-    st.title('Quantidade Alunos ONG X População Embu-Guaçu')
-    st.pyplot(fig2)
+    st.plotly_chart(fig)
 
     
