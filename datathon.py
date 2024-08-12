@@ -164,58 +164,61 @@ with tabs[1]:
         # Incorporando o relatório do Power BI usando um iframe
         st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
         # Dados para gráfico de linha 1
-    data = {
-        'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
-        'Alunos': [70, 300, 550, 812, 841, 824, 970, 1100],
-        'Bolsistas': [26, 35, 80, 106, 112, 133, 112, 100],
-        'Universitários': [0, 0, 1, 2, 26, 51, 71, 94]
-    }
-    df1 = pd.DataFrame(data)
+        with coluna1:
+            data = {
+                'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+                'Alunos': [70, 300, 550, 812, 841, 824, 970, 1100],
+                'Bolsistas': [26, 35, 80, 106, 112, 133, 112, 100],
+                'Universitários': [0, 0, 1, 2, 26, 51, 71, 94]
+            }
+            df1 = pd.DataFrame(data)
 
-    # Criando o gráfico de linha 1
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Alunos'], mode='lines+markers', name='Alunos'))
-    fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Bolsistas'], mode='lines+markers', name='Bolsistas'))
-    fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Universitários'], mode='lines+markers', name='Universitários'))
+            # Criando o gráfico de linha 1
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Alunos'], mode='lines+markers', name='Alunos'))
+            fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Bolsistas'], mode='lines+markers', name='Bolsistas'))
+            fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Universitários'], mode='lines+markers', name='Universitários'))
 
-    fig.update_layout(
-        title='Alunos X Bolsistas X Universitários',
-        xaxis_title='Ano',
-        yaxis_title='Quantidade',
-        height=500,
-        width=500
-    )
+            fig.update_layout(
+                title='Alunos X Bolsistas X Universitários',
+                xaxis_title='Ano',
+                yaxis_title='Quantidade',
+                height=500,
+                width=500
+            )
 
-    # Display with Streamlit
-    st.plotly_chart(fig)
+            # Display with Streamlit
+            st.plotly_chart(fig)                                    
 
-    # Dados para gráfico de linha 2
-    data_2 = {
-        'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
-        'Alunos': [70, 300, 550, 812, 841, 824, 970],
-        'Bolsistas': [26, 35, 80, 106, 112, 133, 112],
-        'Universitários': [0, 0, 1, 2, 26, 51, 71],
-        'Populacao': [67788, 68270, 68750, 69385, 70083, 70402, 66970],
-        '%Populacao': [0.10, 0.44, 0.80, 1.17, 1.20, 1.17, 1.45]
-    }
-    df2 = pd.DataFrame(data_2)
 
-    # Criando o gráfico de linha 2
-    fig = go.Figure()
+    
+        with coluna4:
+            # Dados para gráfico de linha 2
+            data_2 = {
+                'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+                'Alunos': [70, 300, 550, 812, 841, 824, 970],
+                'Bolsistas': [26, 35, 80, 106, 112, 133, 112],
+                'Universitários': [0, 0, 1, 2, 26, 51, 71],
+                'Populacao': [67788, 68270, 68750, 69385, 70083, 70402, 66970],
+                '%Populacao': [0.10, 0.44, 0.80, 1.17, 1.20, 1.17, 1.45]
+            }
+            df2 = pd.DataFrame(data_2)
 
-    fig.add_trace(go.Scatter(x=df2['Ano'], y=df2['Alunos'], mode='lines+markers', name='Alunos'))
-    fig.add_trace(go.Scatter(x=df2['Ano'], y=df2['Bolsistas'], mode='lines+markers', name='Bolsistas'))
-    fig.add_trace(go.Scatter(x=df2['Ano'], y=df2['Universitários'], mode='lines+markers', name='Universitários'))
+            # Criando o gráfico de linha 2
+            fig2 = go.Figure()
+            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['Alunos'], mode='lines+markers', name='Alunos'))
+            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['Bolsistas'], mode='lines+markers', name='Bolsistas'))
+            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['Universitários'], mode='lines+markers', name='Universitários'))
 
-    fig.update_layout(
-        title='Alunos X Bolsistas X Universitários - df2',
-        xaxis_title='Ano',
-        yaxis_title='Quantidade',
-        height=500,
-        width=500
-    )
+            fig2.update_layout(
+                title='Alunos X Bolsistas X Universitários - df2',
+                xaxis_title='Ano',
+                yaxis_title='Quantidade',
+                height=500,
+                width=500
+            )
 
-    # Exibindo o gráfico com o Streamlit
-    st.plotly_chart(fig)
+            # Exibindo o gráfico com o Streamlit
+            st.plotly_chart(fig2)
 
     
