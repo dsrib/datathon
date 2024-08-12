@@ -189,10 +189,6 @@ with tabs[1]:
     # Display with Streamlit
     st.plotly_chart(fig)
 
-    # Exibindo o gráfico com o Streamlit
-    st.title('Alunos X Bolsistas X Universitários')
-    st.pyplot(fig)
-
     # Dados para gráfico de linha 2
     data_2 = {
         'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
