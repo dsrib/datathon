@@ -208,12 +208,12 @@ with tabs[1]:
 
             # Criando o gráfico de linha 2
             fig2 = go.Figure()
-            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['%Populacao'], mode='lines+markers', name='Alunos'))
-            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['Populacao'], mode='lines+markers', name='Bolsistas'))
+            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['%Populacao'], mode='lines+markers', name='%Populacao'))
+            fig2.add_trace(go.Scatter(x=df2['Ano'], y=df2['Populacao'], mode='lines+markers', name='Populacao'))
             
 
             fig2.update_layout(
-                title='Alunos X Bolsistas X Universitários - df2',
+                title='Quantidade Alunos ONG X População Embu-Guaçu',
                 xaxis_title='Ano',
                 yaxis_title='Quantidade',
                 height=500,
