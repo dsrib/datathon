@@ -138,7 +138,7 @@ with tabs[1]:
             df_melted_numeric = df_melted[df_melted['value'].apply(lambda x: str(x).isnumeric())]
             indicadorx = df_melted_numeric['indicador2'].unique()
             indicador_x = st.selectbox(
-                'Indicador para eixo y',
+                'Indicador para eixo x',
                 options=indicadorx,
                 index=list(indicadorx).index("INDE") if "INDE" in indicadorx else 0
             )
@@ -147,7 +147,7 @@ with tabs[1]:
             df_melted_numeric = df_melted[df_melted['value'].apply(lambda x: str(x).isnumeric())]
             indicadory = df_melted_numeric['indicador2'].unique()
             indicador_y = st.selectbox(
-                'Indicador para eixo x',
+                'Indicador para eixo y',
                 options=indicadory,
                 index=list(indicadory).index("IDA") if "IDA" in indicadory else 0
             )
