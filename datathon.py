@@ -177,57 +177,49 @@ with tabs[2]:
       st.markdown("'41'Alunos formados em instituições de ensino superior")  
 
     
-    #Dados para gráfico de linha 1
-    data = {
-          'Ano' : ['2016', '2017', '2018', '2019','2020','2021','2022','2023'],
-          'Alunos' : [70, 300, 550, 812, 841, 824, 970, 1100],
-          'Bolsistas' : [26,35,80,106,112,133,112,100 ],
-          'Universitários' : [0,0,1,2,26,51,71,94]}
-    df2 = pd.DataFrame(data)
-    # Criando o gráfico de linha
-    plt.figure(figsize=(10, 6))
-    plt.plot(df2['Ano'], df2['Alunos'], marker='o', label='Alunos')
-    plt.plot(df2['Ano'], df2['Bolsistas'], marker='o', label='Bolsistas')
-    plt.plot(df2['Ano'], df2['Universitários'], marker='o', label='Universitários')
-    plt.title('Alunos X Bolsistas X Universitários')
-    plt.xlabel('Ano')
-    plt.ylabel('Quantidade')
-    plt.legend()
-    plt.grid(True)
+    # Dados para gráfico de linha 1
+data = {
+    'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+    'Alunos': [70, 300, 550, 812, 841, 824, 970, 1100],
+    'Bolsistas': [26, 35, 80, 106, 112, 133, 112, 100],
+    'Universitários': [0, 0, 1, 2, 26, 51, 71, 94]
+}
+df1 = pd.DataFrame(data)
 
-    # Salvando o gráfico
-    plt.savefig('grafico_linha_tempo.png')
+# Criando o gráfico de linha 1
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.plot(df1['Ano'], df1['Alunos'], marker='o', label='Alunos')
+ax.plot(df1['Ano'], df1['Bolsistas'], marker='o', label='Bolsistas')
+ax.plot(df1['Ano'], df1['Universitários'], marker='o', label='Universitários')
+ax.set_title('Alunos X Bolsistas X Universitários')
+ax.set_xlabel('Ano')
+ax.set_ylabel('Quantidade')
+ax.legend()
+ax.grid(True)
 
-    # Exibindo o gráfico com o Streamlit
-    st.title('Alunos X Bolsistas X Universitários')
-    st.line_chart(x=df2.set_index('Data'), y=df2['Bolsistas'])
+# Exibindo o gráfico com o Streamlit
+st.title('Alunos X Bolsistas X Universitários')
+st.pyplot(fig)
 
-    # Para exibir a imagem salva do gráfico
-    st.image('grafico_linha_tempo.png')
-  
-#Dados para gráfico de linha 2
-    data_2 = {
-          'Ano' : ['2016', '2017', '2018', '2019','2020','2021','2022'],
-          'Alunos' : [70, 300, 550, 812, 841, 824, 970],
-          'Populacao' : [67788,68270,68750,69385,70083,70402,66970],
-          '%Populacao' : [0.10,0.44,0.80,1.17,1.20,1.17,1.45]}
-    df_2 = pd.DataFrame(data_2)
-    # Criando o gráfico de linha
-    plt.figure(figsize=(10, 6))
-    plt.plot(df['Ano'], df['%Populacao'], marker='o', label='%Populacao')
-    plt.plot(df['Ano'], df['Populacao'], marker='o', label='Populacao')
-    plt.title('Quantidade Alunos ONG X População Embu-Guaçu')
-    plt.xlabel('Ano')
-    plt.ylabel('Quantidade')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
-    # Salvando o gráfico
-    plt.savefig('grafico_linha_tempo.png_2')
+# Dados para gráfico de linha 2
+data_2 = {
+    'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+    'Alunos': [70, 300, 550, 812, 841, 824, 970],
+    'Populacao': [67788, 68270, 68750, 69385, 70083, 70402, 66970],
+    '%Populacao': [0.10, 0.44, 0.80, 1.17, 1.20, 1.17, 1.45]
+}
+df2 = pd.DataFrame(data_2)
 
-    # Exibindo o gráfico com o Streamlit
-    st.title('Quantidade Alunos ONG X População Embu-Guaçu')
-    st.line_chart(df.set_index('Data'))
+# Criando o gráfico de linha 2
+fig2, ax2 = plt.subplots(figsize=(10, 6))
+ax2.plot(df2['Ano'], df2['%Populacao'], marker='o', label='% População')
+ax2.plot(df2['Ano'], df2['Populacao'], marker='o', label='População')
+ax2.set_title('Quantidade Alunos ONG X População Embu-Guaçu')
+ax2.set_xlabel('Ano')
+ax2.set_ylabel('Quantidade')
+ax2.legend()
+ax2.grid(True)
 
-    # Para exibir a imagem salva do gráfico
-    st.image('grafico_linha_tempo.png_2') 
+# Exibindo o gráfico com o Streamlit
+st.title('Quantidade Alunos ONG X População Embu-Guaçu')
+st.pyplot(fig2)
