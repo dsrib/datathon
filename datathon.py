@@ -155,15 +155,16 @@ with tabs[1]:
     col1 = st.columns(1)
 
     with col1[0]:
-        #st.write("Indicadores")
-        filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-        fig2 = visualizations.scatter_plot(filtered_df, indicador_x, indicador_y, legenda, width=1400, height=500)
-        st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
-        # URL do relatório do Power BI
-        power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
-        # Incorporando o relatório do Power BI usando um iframe
-        st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
-        # Dados para gráfico de linha 1
+        with col3:
+            #st.write("Indicadores")
+            filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
+            fig2 = visualizations.scatter_plot(filtered_df, indicador_x, indicador_y, legenda, width=1400, height=500)
+            st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
+            # URL do relatório do Power BI
+            power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
+            # Incorporando o relatório do Power BI usando um iframe
+            st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
+            # Dados para gráfico de linha 1
         with col3:
             data = {
                 'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
@@ -190,8 +191,6 @@ with tabs[1]:
             # Display with Streamlit
             st.plotly_chart(fig)                                    
 
-
-    
         with col4:
             # Dados para gráfico de linha 2
             data_2 = {
