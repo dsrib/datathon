@@ -118,8 +118,8 @@ def line_chart_column():
     fig2.update_layout(
         title='Quantidade Alunos ONG X População Embu-Guaçu',
         xaxis_title='Ano',
-        height=500,
-        width=500
+        height=100,
+        width=250
     )
     fig2.update_yaxes(title_text='%Populacao', secondary_y=False)
     fig2.update_yaxes(title_text='Populacao', secondary_y=True)
