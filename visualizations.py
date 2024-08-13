@@ -115,7 +115,6 @@ def line_chart_column():
     # )
 
     # Configurando o layout do gráfico
-    # Configurando o layout do gráfico
     fig2.update_layout(
         title={
             'text': 'Quantidade Alunos ONG X População Embu-Guaçu',
@@ -133,11 +132,11 @@ def line_chart_column():
     )
 
     # Adicionando rótulos de dados somente ao gráfico de barras
-    fig2.update_traces(
-        selector=dict(type='bar'), 
-        texttemplate='%{y:.2f}', 
-        textposition='top center'
-    )
+    # fig2.update_traces(
+    #     selector=dict(type='bar'), 
+    #     texttemplate='%{y:.2f}', 
+    #     textposition='top center'
+    # )
 
     #fig2.update_yaxes(title_text='%Populacao', secondary_y=False)
     #fig2.update_yaxes(title_text='Populacao', secondary_y=True)
