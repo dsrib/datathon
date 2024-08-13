@@ -53,7 +53,7 @@ with tabs[0]:
     delta_2022 = alunos_2022 - alunos_2021
 
     with coluna1:
-        st.metric(label="Impacto Social (nº pessoas)", value=qtd_alunos*4, delta=0)
+        st.metric(label="Pessoas Impactadas", value=qtd_alunos*4, delta=0)
     with coluna2:
         st.metric(label="Qtd Alunos", value=qtd_alunos, delta=0)
     with coluna3:
@@ -69,7 +69,7 @@ with tabs[0]:
     with coluna8:
         st.metric(label="Graduados 2023", value=41, delta=0)
     with coluna9:
-        with st.container():
+       #with st.container():
                 st.plotly_chart(visualizations.line_chart_column())
     #st.table(df_g)
     

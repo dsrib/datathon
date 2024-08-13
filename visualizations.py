@@ -117,7 +117,7 @@ def line_chart_column():
     # Configurando o layout do gráfico
     fig2.update_layout(
         title={
-            'text': 'Quantidade Alunos ONG X População Embu-Guaçu',
+            'text': 'Alunos/População (%)',
             'font': {
                 'size': 9,  # Tamanho da fonte do título
                 'color': 'gray',
