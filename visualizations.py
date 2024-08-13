@@ -119,16 +119,19 @@ def line_chart_column():
         title={
             'text': 'Alunos/População (%)',
             'font': {
-                'size': 9,  # Tamanho da fonte do título
+                'size': 11,  # Tamanho da fonte do título
                 'color': 'gray',
                 'family': 'Arial',
                 'weight': 'normal'
             }
         },
-        xaxis_title='Ano',
+        #xaxis_title='Ano',
         height=190,
         width=280,
-        yaxis_autorange=True  # Aplica autoscale no eixo Y
+        yaxis=dict(
+        showticklabels=False  # Oculta os rótulos dos ticks no eixo Y
+        ),
+        yaxis_autorange=True
     )
 
     # Adicionando rótulos de dados somente ao gráfico de barras
