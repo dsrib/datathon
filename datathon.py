@@ -109,7 +109,7 @@ with tabs[0]:
     st.header("Confraternização de Encerramento:")
     st.markdown("Todo ano, é realizado um evento de confraternização para celebrar as conquistas e realizações do ano que passou.")
 
-    st.header("Indicadores de Sucesso:")    
+    st.header("Gráficos Dados Históricos:")    
 
 with tabs[0]:
         col1, col2 = st.columns([1, 1])
