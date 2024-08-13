@@ -119,8 +119,8 @@ def line_chart_column():
         title={
             'text': 'Quantidade Alunos ONG X População Embu-Guaçu',
             'font': {
-                'size': 12,  # Tamanho da fonte do título
-                'color': 'black',
+                'size': 9,  # Tamanho da fonte do título
+                'color': 'gray',
                 'family': 'Arial',
                 'weight': 'normal'
             }
