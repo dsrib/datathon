@@ -121,6 +121,6 @@ def line_chart_column():
         height=120,
         width=280
     )
-    fig2.update_yaxes(title_text='%Populacao', secondary_y=False)
-    fig2.update_yaxes(title_text='Populacao', secondary_y=True)
+    #fig2.update_yaxes(title_text='%Populacao', secondary_y=False)
+    #fig2.update_yaxes(title_text='Populacao', secondary_y=True)
     return fig2
