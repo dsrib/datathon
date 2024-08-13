@@ -104,15 +104,15 @@ def line_chart_column():
 
     # Adicionando a primeira linha com o primeiro eixo Y (%Populacao)
     fig2.add_trace(
-        go.Bar(x=df2['Ano'], y=df2['%Populacao'], name='%Populacao'),
+        go.Bar(x=df2['Ano'], y=df2['%Populacao']),
         secondary_y=False
     )
 
     # Adicionando a segunda linha com o segundo eixo Y (Populacao)
-    fig2.add_trace(
-        go.Bar(x=df2['Ano'], y=df2['Populacao'], name='Populacao'),
-        secondary_y=True
-    )
+    # fig2.add_trace(
+    #     go.Bar(x=df2['Ano'], y=df2['Populacao'], name='Populacao'),
+    #     secondary_y=True
+    # )
 
     # Configurando o layout do gráfico
     fig2.update_layout(
