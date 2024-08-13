@@ -213,7 +213,7 @@ with tabs[1]:
     with col1:
         min_year, max_year = st.select_slider(
             'Selecione o intervalo de anos',
-            options=list(range(min_ano, max_ano)),  # Garante uma lista de anos inteiros
+            options=list(range(min_ano, max_ano+1)),  # Garante uma lista de anos inteiros
             value=(min_ano, max_ano)  # Valor inicial como o intervalo completo
         )
 
