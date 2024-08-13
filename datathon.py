@@ -56,18 +56,25 @@ with tabs[0]:
         st.write("")
         st.metric(label="Pessoas Impactadas", value=qtd_alunos*4, delta=0)
     with coluna2:
+        st.write("")
         st.metric(label="Qtd Alunos", value=qtd_alunos, delta=0)
     with coluna3:
+        st.write("")
         st.metric(label="Alunos 2020", value=alunos_2020, delta=delta_2020)
     with coluna4:
+        st.write("")
         st.metric(label="Alunos 2021", value=alunos_2021, delta=delta_2021)
     with coluna5:
+        st.write("")
         st.metric(label="Alunos 2022", value=alunos_2022, delta=delta_2022)
     with coluna6:
+        st.write("")
         st.metric(label="Bolsistas 2023", value=98, delta=0)
     with coluna7:
+        st.write("")
         st.metric(label="Universitários 2023", value=103, delta=0)
     with coluna8:
+        st.write("")
         st.metric(label="Graduados 2023", value=41, delta=0)
     with coluna9:
         st.plotly_chart(visualizations.line_chart_column(), use_container_width=True)  
