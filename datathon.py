@@ -148,7 +148,7 @@ with tabs[0]:
                 title='Alunos X Bolsistas X Universitários',
                 xaxis_title='Ano',
                 yaxis_title='Quantidade',
-                height=500,
+                height=400,
                 width=500
             )
 
@@ -188,7 +188,7 @@ with tabs[0]:
                 title='Quantidade Alunos ONG X População Embu-Guaçu',
                 xaxis_title='Ano',
                 yaxis_title='Quantidade',
-                height=500,
+                height=400,
                 width=500
             )
             fig2.update_yaxes(title_text='%Populacao', secondary_y=False)
