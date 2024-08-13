@@ -115,14 +115,15 @@ def line_chart_column():
     # )
 
     # Configurando o layout do gráfico
+    # Configurando o layout do gráfico
     fig2.update_layout(
         title={
             'text': 'Quantidade Alunos ONG X População Embu-Guaçu',
             'font': {
                 'size': 12,  # Tamanho da fonte do título
-                'color': 'black',  # Cor do título (preto)
-                'family': 'Arial',  # Fonte do título
-                'weight': 'normal'  # Retira o negrito
+                'color': 'black',
+                'family': 'Arial',
+                'weight': 'normal'
             }
         },
         xaxis_title='Ano',
@@ -131,8 +132,13 @@ def line_chart_column():
         yaxis_autorange=True  # Aplica autoscale no eixo Y
     )
 
-    # Adicionando rótulos de dados
-    fig2.update_traces(texttemplate='%{y:.2f}', textposition='top center')
+    # Adicionando rótulos de dados somente ao gráfico de barras
+    fig2.update_traces(
+        selector=dict(type='bar'), 
+        texttemplate='%{y:.2f}', 
+        textposition='top center'
+    )
+
     #fig2.update_yaxes(title_text='%Populacao', secondary_y=False)
     #fig2.update_yaxes(title_text='Populacao', secondary_y=True)
     return fig2
