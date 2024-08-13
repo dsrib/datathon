@@ -57,7 +57,7 @@ def scatter_plot(df, varx, vary, legend, width, height):
             xaxis=dict(range=[0, 1]),  # Define uma faixa padrão para o eixo X
             yaxis=dict(range=[0, 1]),  # Define uma faixa padrão para o eixo Y
         )
-        return fig
+        return fig, exit
     var_x = varx
     var_y = vary
     legenda = legend
