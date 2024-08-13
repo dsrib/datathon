@@ -109,68 +109,9 @@ with tabs[0]:
     st.header("Confraternização de Encerramento:")
     st.markdown("Todo ano, é realizado um evento de confraternização para celebrar as conquistas e realizações do ano que passou.")
 
-with tabs[1]:  
+    st.header("Gráficos Dados Históricos:")    
 
-    indicador_x = "IEG"
-    indicador_y = "IDA"
-    legenda = "INSTITUICAO"  
-# Configuração do intervalo de anos lado a lado
-    col1, col2 = st.columns([1, 3])
-
-    # Garantindo que os valores mínimos e máximos sejam inteiros
-    min_ano = int(df_melted['Ano'].min())
-    max_ano = int(df_melted['Ano'].max())
-
-    with col1:
-        min_year, max_year = st.select_slider(
-            'Selecione o intervalo de anos',
-            options=list(range(min_ano, max_ano+1)),  # Garante uma lista de anos inteiros
-            value=(min_ano, max_ano)  # Valor inicial como o intervalo completo
-        )
-
-    with col2:
-        #st.markdown("### Indicadores")
-
-        # Configuração das select boxes lado a lado
-        col3, col4, col5, col6 = st.columns(4)
-
-        with col3:
-            df_melted_numeric = df_melted[df_melted['value'].apply(lambda x: str(x).isnumeric())]
-            indicadorx = df_melted_numeric['indicador2'].unique()
-            indicador_x = st.selectbox(
-                'Indicador para eixo x',
-                options=indicadorx,
-                index=list(indicadorx).index("INDE") if "INDE" in indicadorx else 0
-            )
-
-        with col4:
-            df_melted_numeric = df_melted[df_melted['value'].apply(lambda x: str(x).isnumeric())]
-            indicadory = df_melted_numeric['indicador2'].unique()
-            indicador_y = st.selectbox(
-                'Indicador para eixo y',
-                options=indicadory,
-                index=list(indicadory).index("IDA") if "IDA" in indicadory else 0
-            )
-
-    st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
-    st.markdown("Este relatório tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos.")
-
-    # Usando st.columns para layout da seção do gráfico
-    col1 = st.columns(1)
-
-    with col1[0]:
-
-            #st.write("Indicadores")
-            filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
-            fig2 = visualizations.scatter_plot(filtered_df, indicador_x, indicador_y, legenda, width=1400, height=500)
-            st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
-            # URL do relatório do Power BI
-            power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
-            # Incorporando o relatório do Power BI usando um iframe
-            st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
-            # Dados para gráfico de linha 1
-        
-with tabs[1]:
+with tabs[0]:
         col1, col2 = st.columns([1, 1])
         with col1:
             data = {
@@ -239,4 +180,67 @@ with tabs[1]:
             # Exibindo o gráfico com o Streamlit
             st.plotly_chart(fig2)
 
-    
+
+
+with tabs[1]:  
+
+    indicador_x = "IEG"
+    indicador_y = "IDA"
+    legenda = "INSTITUICAO"  
+# Configuração do intervalo de anos lado a lado
+    col1, col2 = st.columns([1, 3])
+
+    # Garantindo que os valores mínimos e máximos sejam inteiros
+    min_ano = int(df_melted['Ano'].min())
+    max_ano = int(df_melted['Ano'].max())
+
+    with col1:
+        min_year, max_year = st.select_slider(
+            'Selecione o intervalo de anos',
+            options=list(range(min_ano, max_ano+1)),  # Garante uma lista de anos inteiros
+            value=(min_ano, max_ano)  # Valor inicial como o intervalo completo
+        )
+
+    with col2:
+        #st.markdown("### Indicadores")
+
+        # Configuração das select boxes lado a lado
+        col3, col4, col5, col6 = st.columns(4)
+
+        with col3:
+            df_melted_numeric = df_melted[df_melted['value'].apply(lambda x: str(x).isnumeric())]
+            indicadorx = df_melted_numeric['indicador2'].unique()
+            indicador_x = st.selectbox(
+                'Indicador para eixo x',
+                options=indicadorx,
+                index=list(indicadorx).index("INDE") if "INDE" in indicadorx else 0
+            )
+
+        with col4:
+            df_melted_numeric = df_melted[df_melted['value'].apply(lambda x: str(x).isnumeric())]
+            indicadory = df_melted_numeric['indicador2'].unique()
+            indicador_y = st.selectbox(
+                'Indicador para eixo y',
+                options=indicadory,
+                index=list(indicadory).index("IDA") if "IDA" in indicadory else 0
+            )
+
+    st.title("Relatório de Desempenho dos Alunos da Passos Mágicos")
+    st.markdown("Este relatório tem por objetivo resumir os principais indicadores acadêmicos dos alunos da Passos Mágicos.")
+
+    # Usando st.columns para layout da seção do gráfico
+    col1 = st.columns(1)
+
+    with col1[0]:
+
+            #st.write("Indicadores")
+            filtered_df = df_melted[(df_melted['Ano'] >= min_year) & (df_melted['Ano'] <= max_year)]
+            fig2 = visualizations.scatter_plot(filtered_df, indicador_x, indicador_y, legenda, width=1400, height=500)
+            st.plotly_chart(fig2, use_container_width=False, config={'responsive': True})
+            # URL do relatório do Power BI
+            power_bi_report_url = "https://app.powerbi.com/view?r=eyJrIjoiM2Q1YWUzMjMtZjNmNC00ZGY4LWI3ZWUtYmY4N2FhNjc0M2Q3IiwidCI6ImNhZTdkMDYxLTA4ZjMtNDBkZC04MGMzLTNjMGI4ODg5MjI0YSIsImMiOjh9"
+            # Incorporando o relatório do Power BI usando um iframe
+            st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
+            # Dados para gráfico de linha 1
+        
+
