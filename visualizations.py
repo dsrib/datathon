@@ -104,7 +104,7 @@ def line_chart_column():
 
     # Adicionando a primeira linha com o primeiro eixo Y (%Populacao)
     fig2.add_trace(
-        go.Scatter(x=df2['Ano'], y=df2['%Populacao'], mode='lines+markers', name='%Populacao'),
+        go.Scatter(x=df2['Ano'], y=df2['%Populacao'], mode='bars', name='%Populacao'),
         secondary_y=False
     )
 
