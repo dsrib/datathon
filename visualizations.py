@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
 import pandas as pd
+from plotly.subplots import make_subplots
 # Histograma de alunos por ano
 def plot_students_per_year(filtered_df):
     df_g = filtered_df[filtered_df['indicador'].str.contains('INDE')]
