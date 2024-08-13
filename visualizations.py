@@ -126,7 +126,7 @@ def line_chart_column():
             }
         },
         xaxis_title='Ano',
-        height=150,
+        height=190,
         width=280,
         yaxis_autorange=True  # Aplica autoscale no eixo Y
     )
