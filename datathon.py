@@ -70,6 +70,7 @@ with tabs[0]:
         st.metric(label="Alunos 2021", value=alunos_2021, delta=delta_2021)
     with coluna5:
         st.write("")
+        st.write("")
         st.metric(label="Alunos 2022", value=alunos_2022, delta=delta_2022)
     with coluna6:
         st.write("")
