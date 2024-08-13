@@ -57,11 +57,12 @@ def scatter_plot(df, varx, vary, legend, width, height):
             xaxis=dict(range=[0, 1]),  # Define uma faixa padrão para o eixo X
             yaxis=dict(range=[0, 1]),  # Define uma faixa padrão para o eixo Y
         )
-        return fig, exit
+        return fig
     var_x = varx
     var_y = vary
     legenda = legend
     
+
     #legenda
     df_melted=df
     df_scatter = df_melted[df_melted['indicador'].str.startswith(legenda)].drop(columns=['indicador', 'indicador2'])
@@ -78,6 +79,24 @@ def scatter_plot(df, varx, vary, legend, width, height):
     df_x.rename(columns={"value" : var_x}, inplace=True)
     
     df_final = df_scatter.merge(df_x, on=['NOME', 'Ano'], how='left').merge(df_y, on=['NOME', 'Ano'], how='left')
+
+        # Verifica se as colunas x e y estão vazias ou contêm apenas NaN
+    if df_final[varx].dropna().empty or df_final[vary].dropna().empty:
+        fig = px.scatter()  # Cria um gráfico vazio
+        fig.update_layout(
+            title="Dados insuficientes para plotar",
+            xaxis_title=varx,
+            yaxis_title=vary,
+            width=width,
+            height=height,
+            xaxis=dict(range=[0, 1]),
+            yaxis=dict(range=[0, 1]),
+        )
+        return fig
+    
+        # Substitui NaN por 0 para evitar erros ao calcular o mínimo e máximo
+    df_final[varx].fillna(0, inplace=True)
+    df_final[vary].fillna(0, inplace=True)
 
     fig = px.scatter(df_final, x=var_x, y=var_y, animation_frame="Ano", # Changed 'value' to 'value_x'
                  color=legenda,
