@@ -46,7 +46,18 @@ def plot_students_per_year(filtered_df):
 
 
 def scatter_plot(df, varx, vary, legend, width, height):
-    
+    if df.empty:
+        fig = px.scatter()  # Cria um gráfico vazio
+        fig.update_layout(
+            title="Nenhum dado disponível",
+            xaxis_title=varx,
+            yaxis_title=vary,
+            width=width,
+            height=height,
+            xaxis=dict(range=[0, 1]),  # Define uma faixa padrão para o eixo X
+            yaxis=dict(range=[0, 1]),  # Define uma faixa padrão para o eixo Y
+        )
+        return fig
     var_x = varx
     var_y = vary
     legenda = legend
