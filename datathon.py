@@ -53,6 +53,7 @@ with tabs[0]:
     delta_2022 = alunos_2022 - alunos_2021
 
     with coluna1:
+        st.divider()
         st.metric(label="Pessoas Impactadas", value=qtd_alunos*4, delta=0)
     with coluna2:
         st.metric(label="Qtd Alunos", value=qtd_alunos, delta=0)
