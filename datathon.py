@@ -109,6 +109,77 @@ with tabs[0]:
     st.header("Confraternização de Encerramento:")
     st.markdown("Todo ano, é realizado um evento de confraternização para celebrar as conquistas e realizações do ano que passou.")
 
+with tabs[0]:
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            data = {
+                'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+                'Alunos': [70, 300, 550, 812, 841, 824, 970, 1100],
+                'Bolsistas': [26, 35, 80, 106, 112, 133, 112, 100],
+                'Universitários': [0, 0, 1, 2, 26, 51, 71, 94]
+            }
+            df1 = pd.DataFrame(data)
+
+            # Criando o gráfico de linha 1
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Alunos'], mode='lines+markers', name='Alunos'))
+            fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Bolsistas'], mode='lines+markers', name='Bolsistas'))
+            fig.add_trace(go.Scatter(x=df1['Ano'], y=df1['Universitários'], mode='lines+markers', name='Universitários'))
+
+            fig.update_layout(
+                title='Alunos X Bolsistas X Universitários',
+                xaxis_title='Ano',
+                yaxis_title='Quantidade',
+                height=500,
+                width=500
+            )
+
+            # Display with Streamlit
+            st.plotly_chart(fig)                                    
+
+        with col2:
+            # Dados para gráfico de linha 2
+            data_2 = {
+                'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+                'Alunos': [70, 300, 550, 812, 841, 824, 970],
+                'Bolsistas': [26, 35, 80, 106, 112, 133, 112],
+                'Universitários': [0, 0, 1, 2, 26, 51, 71],
+                'Populacao': [67788, 68270, 68750, 69385, 70083, 70402, 66970],
+                '%Populacao': [0.10, 0.44, 0.80, 1.17, 1.20, 1.17, 1.45]
+            }
+            df2 = pd.DataFrame(data_2)
+
+            # Criando o gráfico de linha 2
+            # Criando uma figura com dois eixos Y
+            fig2 = make_subplots(specs=[[{"secondary_y": True}]])
+
+            # Adicionando a primeira linha com o primeiro eixo Y (%Populacao)
+            fig2.add_trace(
+                go.Scatter(x=df2['Ano'], y=df2['%Populacao'], mode='lines+markers', name='%Populacao'),
+                secondary_y=False
+            )
+
+            # Adicionando a segunda linha com o segundo eixo Y (Populacao)
+            fig2.add_trace(
+                go.Scatter(x=df2['Ano'], y=df2['Populacao'], mode='lines+markers', name='Populacao'),
+                secondary_y=True
+            )
+                    
+
+            fig2.update_layout(
+                title='Quantidade Alunos ONG X População Embu-Guaçu',
+                xaxis_title='Ano',
+                yaxis_title='Quantidade',
+                height=500,
+                width=500
+            )
+            fig2.update_yaxes(title_text='%Populacao', secondary_y=False)
+            fig2.update_yaxes(title_text='Populacao', secondary_y=True)
+            # Exibindo o gráfico com o Streamlit
+            st.plotly_chart(fig2)
+
+
+
 with tabs[1]:  
 
     indicador_x = "IEG"
