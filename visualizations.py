@@ -175,10 +175,9 @@ def line_chart_column():
     #fig2.update_yaxes(title_text='Populacao', secondary_y=True)
     return fig2
 
-# Gráfico da pirâmide etária
-def plot_piramide_etaria(piramide_etaria, title="Pirâmide Etária", colors=('skyblue', 'coral')):
-    total_pop_escolar = pop_escolar.loc['População por idade'].sum()         # Calcular o total da população em idade escolar
-    pop_escolar_ordenada = pop_escolar.sort_values(by='População por idade', axis=1)         # Ordenar a população em idade escolar em ordem ascendente
+def plot_piramide_etaria(piramide_etaria, pop_escolar, title="Pirâmide Etária", colors=('skyblue', 'coral')):
+    total_pop_escolar = pop_escolar.loc['População por idade'].sum()
+    pop_escolar_ordenada = pop_escolar.sort_values(by='População por idade', axis=1)
 
     fig, axes = plt.subplots(1, 2, figsize=(20, 10))
 
@@ -204,5 +203,6 @@ def plot_piramide_etaria(piramide_etaria, title="Pirâmide Etária", colors=('sk
         percentual_escolar = v / total_pop_escolar * 100
         bar_width = pop_escolar_ordenada.loc['População por idade'][i]
         axes[1].text(bar_width / 2, i, f'{percentual_escolar:.1f}%', va='center', ha='center', color='saddlebrown', fontsize=12)
+
+    # Exiba o gráfico
     st.pyplot(fig)
-    return fig
