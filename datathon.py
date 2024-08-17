@@ -40,7 +40,7 @@ df_melted['indicador2'] = df_melted['indicador'].apply(lambda x: str(x[:-5]))
 
 # Visualização no Streamlit
 st.title('PASSOS MÁGICOS')
-tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos', 'Impacto da Passos Mágicos em Embu-Guaçu'])
+tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos', 'Impacto'])
 
 with tabs[0]:
     coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7, coluna8, coluna9 = st.columns([1, 1, 1, 1, 1, 1, 1, 1, 1])
@@ -264,6 +264,9 @@ with tabs[1]:
             # Dados para gráfico de linha 1
 
 with tabs[2]:
+  st.title("Impacto da Passos Mágicos no município de Embu-Guaçu-SP")
+    st.markdown("Embu-Guaçu é um município de 66970 habitantes, segundo o Censo 2022 do IBGE. Esta análise pretende trazer dados da composição etária da cidade, com foco na população em idade escolar, comparando à população atendida pela ONG Passos Mágicos e a revelância do trabalho da ONG em indicadores de educação nacionais (IDEB)")
+
   #Tratamento dos dados para o gráfico
   piramide_etaria.drop(['Município', 'Sigla UF', 'Código do Município', 'codMun'], axis=1, inplace=True)
   pop_list=['População feminina(pessoas)', 'População masculina(pessoas)']
@@ -302,5 +305,7 @@ with tabs[2]:
       axes[1].text(bar_width / 2, i, f'{percentual_escolar:.1f}%', va='center', ha='center', color='saddlebrown', fontsize=12)
 
   # Exiba o gráfico
+  st.header("Pirâmide etária")
   st.pyplot(fig)
+  st.markdown("Quase 30% da população de Embu-Guaçu está concentrada nas idades de 5 a 24 anos, demonstrando que o trabalho da ONG Passos Mágicos é relevante para uma parcela significativa dos cidadãos. A análise da distribuição deste grupo mostra-se equilibrada, justificando a necessidade, para todas as faixas etárias, de oportunidades proporcionadas pela ONG." )
 
