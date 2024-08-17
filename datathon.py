@@ -20,6 +20,10 @@ st.set_page_config(layout='wide')
 
 # Carregar dados
 df = pd.read_csv("PEDE_PASSOS_DATASET_FIAP.csv", sep=';')
+piramide_etaria = pd.read_csv('Censo 2022 - Pirâmide etária - Embu-Guaçu (SP).csv', sep=';')
+dados_alunos = pd.read_csv('TbAluno.csv', sep=',')
+evolucao_ideb = pd.read_excel('evolucao_ideb.xlsx')
+
 # Carregar texto pré-formatado
 descricao = functions.load_text('AboutPassos.txt')
 # Tabelas filtradas
@@ -36,7 +40,7 @@ df_melted['indicador2'] = df_melted['indicador'].apply(lambda x: str(x[:-5]))
 
 # Visualização no Streamlit
 st.title('PASSOS MÁGICOS')
-tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos'])
+tabs = st.tabs(['Visão Geral', 'Relatório Geral dos Alunos', 'Impacto da Passos Mágicos em Embu-Guaçu])
 
 with tabs[0]:
     coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7, coluna8, coluna9 = st.columns([1, 1, 1, 1, 1, 1, 1, 1, 1])
