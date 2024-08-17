@@ -265,7 +265,7 @@ with tabs[1]:
 
 with tabs[2]:
   st.title("Impacto da Passos Mágicos no município de Embu-Guaçu-SP")
-    st.markdown("Embu-Guaçu é um município de 66970 habitantes, segundo o Censo 2022 do IBGE. Esta análise pretende trazer dados da composição etária da cidade, com foco na população em idade escolar, comparando à população atendida pela ONG Passos Mágicos e a revelância do trabalho da ONG em indicadores de educação nacionais (IDEB)")
+  st.markdown("Embu-Guaçu é um município de 66970 habitantes, segundo o Censo 2022 do IBGE. Esta análise pretende trazer dados da composição etária da cidade, com foco na população em idade escolar, comparando à população atendida pela ONG Passos Mágicos e a revelância do trabalho da ONG em indicadores de educação nacionais (IDEB)")
 
   #Tratamento dos dados para o gráfico
   piramide_etaria.drop(['Município', 'Sigla UF', 'Código do Município', 'codMun'], axis=1, inplace=True)
