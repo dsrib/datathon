@@ -175,7 +175,7 @@ def line_chart_column():
     #fig2.update_yaxes(title_text='Populacao', secondary_y=True)
     return fig2
 
-def plot_piramide_etaria():
+def plot_piramide_etaria(piramide_etaria):
     
     #Tratamento dos dados para o gráfico
     piramide_etaria.drop(['Município', 'Sigla UF', 'Código do Município', 'codMun'], axis=1, inplace=True)
