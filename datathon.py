@@ -264,7 +264,47 @@ with tabs[1]:
             # Dados para gráfico de linha 1
 
 with tabs[2]:
-  piramide_etaria = pd.read_csv('Censo 2022 - Pirâmide etária - Embu-Guaçu (SP).csv', sep=';')
+ def plot_piramide_etaria(piramide_etaria):
+    
+    #Tratamento dos dados para o gráfico
+    piramide_etaria.drop(['Município', 'Sigla UF', 'Código do Município', 'codMun'], axis=1, inplace=True)
+    pop_list=['População feminina(pessoas)', 'População masculina(pessoas)']
+    piramide_etaria['População por idade']=piramide_etaria[pop_list].sum(axis=1)
+    pop_total = piramide_etaria['População por idade'].sum()
+    piramide_etaria['Percentual'] = (piramide_etaria['População por idade'] / pop_total * 100)
+    piramide2 = piramide_etaria.set_index(['Grupo de idade']).T
+    idade_escolar = ['5 a 9 anos', '10 a 14 anos', '15 a 19 anos', '20 a 24 anos']
+    pop_escolar = piramide2[idade_escolar]
+    total_pop_escolar = pop_escolar.loc['População por idade'].sum()
+    pop_escolar_ordenada = pop_escolar.sort_values(by='População por idade', axis=1)
+
+    fig, axes = plt.subplots(1, 2, figsize=(20, 10))
+
+    # Plotando a pirâmide etária de Embu-Guaçu
+    axes[0].barh(piramide_etaria['Grupo de idade'], piramide_etaria['População por idade'], color='skyblue')
+    axes[0].set_title('Pirâmide Etária de Embu-Guaçu', fontsize=16)
+    axes[0].set_xlabel('População', fontsize=14)
+    axes[0].set_ylabel('Grupo de Idade', fontsize=14)
+    axes[0].tick_params(axis='both', labelsize=12)
+
+    for i, v in enumerate(piramide_etaria['Percentual']):
+        bar_width = piramide_etaria['População por idade'][i]
+        axes[0].text(bar_width / 2, i, f'{v:.1f}%', va='center', ha='center', color='darkblue', fontsize=12)
+
+    # Plotando a pirâmide etária da população em idade escolar
+    axes[1].barh(pop_escolar_ordenada.columns, pop_escolar_ordenada.loc['População por idade'], color='coral')
+    axes[1].set_title('Pirâmide Etária da População em Idade Escolar de Embu-Guaçu', fontsize=16)
+    axes[1].set_xlabel('População', fontsize=14)
+    axes[1].set_ylabel('Grupo de Idade', fontsize=14)
+    axes[1].tick_params(axis='both', labelsize=12)
+
+    for i, v in enumerate(pop_escolar_ordenada.loc['População por idade']):
+        percentual_escolar = v / total_pop_escolar * 100
+        bar_width = pop_escolar_ordenada.loc['População por idade'][i]
+        axes[1].text(bar_width / 2, i, f'{percentual_escolar:.1f}%', va='center', ha='center', color='saddlebrown', fontsize=12)
+
+    # Exiba o gráfico
+    st.pyplot(fig)
   try:
     plot_piramide_etaria(piramide_etaria)
   except Exception as e:
