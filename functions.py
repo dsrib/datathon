@@ -67,28 +67,4 @@ def chat_with_openai():
             st.error(f"Erro na API: {str(e)}")
         except Exception as e:
             st.error(f"Ocorreu um erro inesperado: {str(e)}")
-
-# Função de ajuste dos dados de alunos
-def ajuste(dados_alunos):
-    colunas_interesse = ['IdAluno', 'DataNascimento']
-    idade_alunos = dados_alunos[colunas_interesse]
-    idade_alunos2 = idade_alunos.drop(793)         # Erro na base
-    idade_alunos2['DataNascimento'] = pd.to_datetime(idade_alunos2['DataNascimento'])
-    idade_alunos2['Idade']=2022-idade_alunos2['DataNascimento'].dt.year        # Cálculo da idade
-
-    # Agrupamento por faixa etária
-    fx_etaria = [
-    (idade_alunos2['Idade'] >= 5) & (idade_alunos2['Idade'] <= 9),
-    (idade_alunos2['Idade'] >= 10) & (idade_alunos2['Idade'] <= 14),
-    (idade_alunos2['Idade'] >= 15) & (idade_alunos2['Idade'] <= 19),
-    (idade_alunos2['Idade'] >= 20) & (idade_alunos2['Idade'] <= 24),
-    (idade_alunos2['Idade'] >= 25)
-]
-
-    grupos = ['05 a 09 anos', '10 a 14 anos', '15 a 19 anos', '20 a 24 anos', '25 anos ou mais']
-    idade_alunos2['Grupo de idade'] = np.select(fx_etaria, grupos)
-    idade_alunos2 = idade_alunos2[idade_alunos2['Idade'] > 0]
-    qtde_alunos_idade = idade_alunos2['Grupo de idade'].value_counts().sort_index()
-
-    return qtde_alunos_idade
     
