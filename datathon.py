@@ -265,4 +265,8 @@ with tabs[1]:
 
 with tabs[2]:
   piramide_etaria = pd.read_csv('Censo 2022 - Pirâmide etária - Embu-Guaçu (SP).csv', sep=';')
-  plot_piramide_etaria(piramide_etaria, pop_escolar)
+  try:
+    plot_piramide_etaria(piramide_etaria)
+  except Exception as e:
+    st.exception(e)
+
