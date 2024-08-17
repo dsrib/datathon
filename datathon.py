@@ -325,8 +325,8 @@ with tabs[2]:
 ]
 
   grupos = ['05 a 09 anos', '10 a 14 anos', '15 a 19 anos', '20 a 24 anos', '25 anos ou mais']
-  idade_alunos2['Grupo de idade'] = np.select(fx_etaria, grupos)
   idade_alunos2 = idade_alunos2[idade_alunos2['Idade'] > 0]
+  idade_alunos2['Grupo de idade'] = np.select(fx_etaria, grupos)
   qtde_alunos_idade = idade_alunos2['Grupo de idade'].value_counts().sort_index()
 
   fig, ax = plt.subplots(figsize=(10, 5))
