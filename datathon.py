@@ -330,15 +330,15 @@ with tabs[2]:
   qtde_alunos_idade = idade_alunos2['Grupo de idade'].value_counts().sort_index()
 
   fig, ax = plt.subplots(figsize=(10, 5))
-    bars = ax.bar(qtde_alunos_idade.index, qtde_alunos_idade.values)
-    ax.set_ylabel('Quantidade de alunos')
-    ax.set_xlabel('Grupo de idade')
-    ax.set_title('Quantidade de alunos da Passos Mágicos por faixa etária')
+  bars = ax.bar(qtde_alunos_idade.index, qtde_alunos_idade.values)
+  ax.set_ylabel('Quantidade de alunos')
+  ax.set_xlabel('Grupo de idade')
+  ax.set_title('Quantidade de alunos da Passos Mágicos por faixa etária')
 
     # Adicionar labels acima de cada barra
     for bar in bars:
-        yval = bar.get_height()
-        plt.text(bar.get_x() + bar.get_width() / 2, yval + 0.5, yval, ha='center', va='bottom')
+      yval = bar.get_height()
+      plt.text(bar.get_x() + bar.get_width() / 2, yval + 0.5, yval, ha='center', va='bottom')
 
     # Exiba o gráfico
     st.pyplot(fig)
