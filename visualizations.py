@@ -175,7 +175,9 @@ def line_chart_column():
     #fig2.update_yaxes(title_text='Populacao', secondary_y=True)
     return fig2
 
-def plot_piramide_etaria(piramide_etaria, pop_escolar, title="Pirâmide Etária", colors=('skyblue', 'coral')):
+def plot_piramide_etaria():
+    
+    #Tratamento dos dados para o gráfico
     piramide_etaria.drop(['Município', 'Sigla UF', 'Código do Município', 'codMun'], axis=1, inplace=True)
     pop_list=['População feminina(pessoas)', 'População masculina(pessoas)']
     piramide_etaria['População por idade']=piramide_etaria[pop_list].sum(axis=1)
