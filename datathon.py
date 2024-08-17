@@ -336,9 +336,9 @@ with tabs[2]:
   ax.set_title('Quantidade de alunos da Passos Mágicos por faixa etária')
 
     # Adicionar labels acima de cada barra
-    for bar in bars:
-      yval = bar.get_height()
-      plt.text(bar.get_x() + bar.get_width() / 2, yval + 0.5, yval, ha='center', va='bottom')
+  for bar in bars:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width() / 2, yval + 0.5, yval, ha='center', va='bottom')
 
     # Exiba o gráfico
     st.pyplot(fig)
