@@ -263,4 +263,13 @@ with tabs[1]:
             st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
             # Dados para gráfico de linha 1
         
-
+with tabs[2]:
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            data = {
+                'Ano': ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+                'Alunos': [70, 300, 550, 812, 841, 824, 970, 1100],
+                'Bolsistas': [26, 35, 80, 106, 112, 133, 112, 100],
+                'Universitários': [0, 0, 1, 2, 26, 51, 71, 94]
+            }
+            df1 = pd.DataFrame(data)
