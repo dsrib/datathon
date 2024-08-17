@@ -176,6 +176,14 @@ def line_chart_column():
     return fig2
 
 def plot_piramide_etaria(piramide_etaria, pop_escolar, title="Pirâmide Etária", colors=('skyblue', 'coral')):
+    piramide_etaria.drop(['Município', 'Sigla UF', 'Código do Município', 'codMun'], axis=1, inplace=True)
+    pop_list=['População feminina(pessoas)', 'População masculina(pessoas)']
+    piramide_etaria['População por idade']=piramide_etaria[pop_list].sum(axis=1)
+    pop_total = piramide_etaria['População por idade'].sum()
+    piramide_etaria['Percentual'] = (piramide_etaria['População por idade'] / pop_total * 100)
+    piramide2 = piramide_etaria.set_index(['Grupo de idade']).T
+    idade_escolar = ['5 a 9 anos', '10 a 14 anos', '15 a 19 anos', '20 a 24 anos']
+    pop_escolar = piramide2[idade_escolar]
     total_pop_escolar = pop_escolar.loc['População por idade'].sum()
     pop_escolar_ordenada = pop_escolar.sort_values(by='População por idade', axis=1)
 
