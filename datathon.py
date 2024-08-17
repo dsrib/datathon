@@ -305,9 +305,4 @@ with tabs[2]:
 
     # Exiba o gráfico
     st.pyplot(fig)
-  
-  try:
-    plot_piramide_etaria(piramide_etaria)
-  except Exception as e:
-    st.exception(e)
 
