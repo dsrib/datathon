@@ -204,4 +204,4 @@ def plot_piramide_etaria(piramide_etaria, title="Pirâmide Etária", colors=('sk
         percentual_escolar = v / total_pop_escolar * 100
         bar_width = pop_escolar_ordenada.loc['População por idade'][i]
         axes[1].text(bar_width / 2, i, f'{percentual_escolar:.1f}%', va='center', ha='center', color='saddlebrown', fontsize=12)
-    
+    st.pyplot(fig)
