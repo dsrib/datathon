@@ -309,3 +309,7 @@ with tabs[2]:
   st.pyplot(fig)
   st.markdown("Quase 30% da população de Embu-Guaçu está concentrada nas idades de 5 a 24 anos, demonstrando que o trabalho da ONG Passos Mágicos é relevante para uma parcela significativa dos cidadãos. A análise da distribuição deste grupo mostra-se equilibrada, justificando a necessidade, para todas as faixas etárias, de oportunidades proporcionadas pela ONG." )
 
+  qtde_alunos_idade = functions.ajuste(dados_alunos)
+  st.header("Alunos da Passos Mágicos")
+  plot_grafico_alunos(qtde_alunos_idade)
+
