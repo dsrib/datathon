@@ -309,9 +309,37 @@ with tabs[2]:
   st.pyplot(fig)
   st.markdown("Quase 30% da população de Embu-Guaçu está concentrada nas idades de 5 a 24 anos, demonstrando que o trabalho da ONG Passos Mágicos é relevante para uma parcela significativa dos cidadãos. A análise da distribuição deste grupo mostra-se equilibrada, justificando a necessidade, para todas as faixas etárias, de oportunidades proporcionadas pela ONG." )
 
-  qtde_alunos_idade = functions.ajuste(dados_alunos)
-  st.header("Alunos da Passos Mágicos")
-  try: plot_grafico_alunos(qtde_alunos_idade)
-  except Exception as e:
-    st.exception(e)
+  colunas_interesse = ['IdAluno', 'DataNascimento']
+  idade_alunos = dados_alunos[colunas_interesse]
+  idade_alunos2 = idade_alunos.drop(793)         # Erro na base
+  idade_alunos2['DataNascimento'] = pd.to_datetime(idade_alunos2['DataNascimento'])
+  idade_alunos2['Idade']=2022-idade_alunos2['DataNascimento'].dt.year        # Cálculo da idade
+
+  # Agrupamento por faixa etária
+  fx_etaria = [
+    (idade_alunos2['Idade'] >= 5) & (idade_alunos2['Idade'] <= 9),
+    (idade_alunos2['Idade'] >= 10) & (idade_alunos2['Idade'] <= 14),
+    (idade_alunos2['Idade'] >= 15) & (idade_alunos2['Idade'] <= 19),
+    (idade_alunos2['Idade'] >= 20) & (idade_alunos2['Idade'] <= 24),
+    (idade_alunos2['Idade'] >= 25)
+]
+
+  grupos = ['05 a 09 anos', '10 a 14 anos', '15 a 19 anos', '20 a 24 anos', '25 anos ou mais']
+  idade_alunos2['Grupo de idade'] = np.select(fx_etaria, grupos)
+  idade_alunos2 = idade_alunos2[idade_alunos2['Idade'] > 0]
+  qtde_alunos_idade = idade_alunos2['Grupo de idade'].value_counts().sort_index()
+
+  fig, ax = plt.subplots(figsize=(10, 5))
+    bars = ax.bar(qtde_alunos_idade.index, qtde_alunos_idade.values)
+    ax.set_ylabel('Quantidade de alunos')
+    ax.set_xlabel('Grupo de idade')
+    ax.set_title('Quantidade de alunos da Passos Mágicos por faixa etária')
+
+    # Adicionar labels acima de cada barra
+    for bar in bars:
+        yval = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width() / 2, yval + 0.5, yval, ha='center', va='bottom')
+
+    # Exiba o gráfico
+    st.pyplot(fig)
 
