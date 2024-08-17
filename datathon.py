@@ -264,4 +264,4 @@ with tabs[1]:
             # Dados para gráfico de linha 1
 
 with tabs[2]:
-        plot_piramide_etaria(piramide_etaria)
+  plot_piramide_etaria(piramide_etaria)
