@@ -311,5 +311,7 @@ with tabs[2]:
 
   qtde_alunos_idade = functions.ajuste(dados_alunos)
   st.header("Alunos da Passos Mágicos")
-  plot_grafico_alunos(qtde_alunos_idade)
+  try: plot_grafico_alunos(qtde_alunos_idade)
+    except Exception as e:
+    st.exception(e)
 
