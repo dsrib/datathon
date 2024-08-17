@@ -174,3 +174,34 @@ def line_chart_column():
     #fig2.update_yaxes(title_text='%Populacao', secondary_y=False)
     #fig2.update_yaxes(title_text='Populacao', secondary_y=True)
     return fig2
+
+# Gráfico da pirâmide etária
+def plot_piramide_etaria(piramide_etaria, title="Pirâmide Etária", colors=('skyblue', 'coral')):
+    total_pop_escolar = pop_escolar.loc['População por idade'].sum()         # Calcular o total da população em idade escolar
+    pop_escolar_ordenada = pop_escolar.sort_values(by='População por idade', axis=1)         # Ordenar a população em idade escolar em ordem ascendente
+
+    fig, axes = plt.subplots(1, 2, figsize=(20, 10))
+
+    # Plotando a pirâmide etária de Embu-Guaçu
+    axes[0].barh(piramide_etaria['Grupo de idade'], piramide_etaria['População por idade'], color='skyblue')
+    axes[0].set_title('Pirâmide Etária de Embu-Guaçu', fontsize=16)
+    axes[0].set_xlabel('População', fontsize=14)
+    axes[0].set_ylabel('Grupo de Idade', fontsize=14)
+    axes[0].tick_params(axis='both', labelsize=12)
+
+    for i, v in enumerate(piramide_etaria['Percentual']):
+        bar_width = piramide_etaria['População por idade'][i]
+        axes[0].text(bar_width / 2, i, f'{v:.1f}%', va='center', ha='center', color='darkblue', fontsize=12)
+
+    # Plotando a pirâmide etária da população em idade escolar
+    axes[1].barh(pop_escolar_ordenada.columns, pop_escolar_ordenada.loc['População por idade'], color='coral')
+    axes[1].set_title('Pirâmide Etária da População em Idade Escolar de Embu-Guaçu', fontsize=16)
+    axes[1].set_xlabel('População', fontsize=14)
+    axes[1].set_ylabel('Grupo de Idade', fontsize=14)
+    axes[1].tick_params(axis='both', labelsize=12)
+
+    for i, v in enumerate(pop_escolar_ordenada.loc['População por idade']):
+        percentual_escolar = v / total_pop_escolar * 100
+        bar_width = pop_escolar_ordenada.loc['População por idade'][i]
+        axes[1].text(bar_width / 2, i, f'{percentual_escolar:.1f}%', va='center', ha='center', color='saddlebrown', fontsize=12)
+    
