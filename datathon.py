@@ -262,3 +262,43 @@ with tabs[1]:
             # Incorporando o relatório do Power BI usando um iframe
             st.components.v1.iframe(power_bi_report_url, width=1400, height=800, scrolling=True)
             # Dados para gráfico de linha 1
+
+with tabs[0]:
+        col1, col2 = st.columns([1, 1])
+        with col1:
+# Função para gerar gráficos
+def plot_piramide_etaria(piramide_etaria):
+    st.header("Pirâmide Etária de Embu-Guaçu")
+
+    piramide_etaria.drop(['Município', 'Sigla UF', 'Código do Município', 'codMun'], axis=1, inplace=True)
+    piramide_etaria['População por idade'] = piramide_etaria[['População feminina(pessoas)', 'População masculina(pessoas)']].sum(axis=1)
+    piramide_etaria['Percentual'] = (piramide_etaria['População por idade'] / piramide_etaria['População por idade'].sum() * 100)
+
+    idade_escolar = ['5 a 9 anos', '10 a 14 anos', '15 a 19 anos', '20 a 24 anos']
+    pop_escolar = piramide_etaria[piramide_etaria['Grupo de idade'].isin(idade_escolar)].set_index('Grupo de idade').transpose()
+    total_pop_escolar = pop_escolar.loc['População por idade'].sum()
+    pop_escolar_ordenada = pop_escolar.sort_values(by='População por idade', axis=1)
+
+    fig, axes = plt.subplots(1, 2, figsize=(20, 10))
+
+    # Pirâmide etária de Embu-Guaçu
+    axes[0].barh(piramide_etaria['Grupo de idade'], piramide_etaria['População por idade'], color='skyblue')
+    axes[0].set_title('Pirâmide Etária de Embu-Guaçu', fontsize=16)
+    axes[0].set_xlabel('População', fontsize=14)
+    axes[0].set_ylabel('Grupo de Idade', fontsize=14)
+    axes[0].tick_params(axis='both', labelsize=12)
+    for i, v in enumerate(piramide_etaria['Percentual']):
+        axes[0].text(piramide_etaria['População por idade'][i] / 2, i, f'{v:.1f}%', va='center', ha='center', color='darkblue', fontsize=12)
+
+    # Pirâmide etária da população em idade escolar
+    axes[1].barh(pop_escolar_ordenada.columns, pop_escolar_ordenada.loc['População por idade'], color='coral')
+    axes[1].set_title('Pirâmide Etária da População em Idade Escolar de Embu-Guaçu', fontsize=16)
+    axes[1].set_xlabel('População', fontsize=14)
+    axes[1].set_ylabel('Grupo de Idade', fontsize=14)
+    axes[1].tick_params(axis='both', labelsize=12)
+    for i, v in enumerate(pop_escolar_ordenada.loc['População por idade']):
+        percentual_escolar = v / total_pop_escolar * 100
+        axes[1].text(v / 2, i, f'{percentual_escolar:.1f}%', va='center', ha='center', color='saddlebrown', fontsize=12)
+
+    plt.tight_layout()
+    st.pyplot(fig)
